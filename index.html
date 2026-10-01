@@ -2,47 +2,106 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no">
 
     <title>Stars KG</title>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
+        html {
+            background: #080808;
+        }
+
         body {
             margin: 0;
-            background: #0f0f10;
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    #3b0808 0%,
+                    #150303 28%,
+                    #080808 65%
+                );
+
             color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Roboto, Arial, sans-serif;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            min-height: 100vh;
         }
+
+        /* =========================
+           APP
+        ========================= */
 
         .app {
             max-width: 520px;
             margin: auto;
-            padding: 20px 16px 110px;
+
+            padding:
+                18px
+                16px
+                115px;
         }
 
+
+        /* =========================
+           HEADER
+        ========================= */
+
         .header {
-            padding: 10px 2px 20px;
+            padding:
+                8px
+                2px
+                22px;
         }
 
         .logo {
-            font-size: 29px;
-            font-weight: 800;
+            font-size: 30px;
+            font-weight: 900;
+
+            letter-spacing: -1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #ff3b3b
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            margin-top: 5px;
-            color: #9b9ba1;
+            color: #8e8e93;
+
             font-size: 14px;
+
+            margin-top: 6px;
         }
+
+
+        /* =========================
+           PAGES
+        ========================= */
 
         .page {
             display: none;
@@ -50,278 +109,682 @@
 
         .page.active {
             display: block;
+            animation: appear .2s ease;
         }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
 
         .card {
-            background: #19191c;
-            border: 1px solid #29292e;
-            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #181010,
+                    #0f0f10
+                );
+
+            border:
+                1px solid #302020;
+
+            border-radius: 22px;
+
             padding: 18px;
+
             margin-bottom: 14px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,.35);
         }
 
+
+        .card:hover {
+            border-color: #4b2020;
+        }
+
+
         .card-title {
+
             font-size: 20px;
-            font-weight: 750;
+
+            font-weight: 800;
+
             margin-bottom: 7px;
         }
 
+
         .description {
-            color: #9d9da4;
+
+            color: #99999f;
+
             font-size: 14px;
-            line-height: 1.45;
+
+            line-height: 1.5;
         }
+
+
+        /* =========================
+           PRICE
+        ========================= */
 
         .price {
-            font-size: 22px;
-            font-weight: 800;
-            margin: 15px 0;
+
+            font-size: 23px;
+
+            font-weight: 900;
+
+            margin:
+                15px
+                0;
+
+            color: #ff3b3b;
         }
 
+
         .rate {
-            color: #b4b4bb;
-            line-height: 1.7;
+
+            color: #b4b4ba;
+
+            line-height: 1.8;
+
             margin-top: 10px;
         }
 
-        button {
-            width: 100%;
-            border: none;
-            border-radius: 14px;
-            padding: 14px 12px;
-            margin-top: 9px;
-            background: #ffffff;
-            color: #111111;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-        }
 
-        button:active {
-            transform: scale(.98);
-        }
-
-        button.secondary {
-            background: #29292e;
+        .rate b {
             color: #ffffff;
         }
 
-        button.danger {
-            background: #3a2424;
-            color: #ffb5b5;
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        button {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 15px;
+
+            padding: 14px 12px;
+
+            margin-top: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff3030,
+                    #c50909
+                );
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 18px
+                rgba(220,0,0,.16);
+
+            transition:
+                transform .12s,
+                filter .12s;
         }
 
+
+        button:active {
+
+            transform:
+                scale(.97);
+
+            filter:
+                brightness(.85);
+        }
+
+
+        button.secondary {
+
+            background:
+                #211719;
+
+            border:
+                1px solid #402326;
+
+            color: #ffffff;
+
+            box-shadow: none;
+        }
+
+
+        button.danger {
+
+            background:
+                #321515;
+
+            border:
+                1px solid #592222;
+
+            color:
+                #ff8585;
+        }
+
+
         .row {
+
             display: flex;
+
             gap: 8px;
         }
 
+
         .row button {
+
             flex: 1;
         }
+
+
+        /* =========================
+           INPUTS
+        ========================= */
 
         input,
         select {
+
             width: 100%;
+
             padding: 14px;
+
             margin-top: 9px;
-            border-radius: 13px;
-            border: 1px solid #36363c;
-            background: #121214;
+
+            border-radius: 14px;
+
+            border:
+                1px solid #392326;
+
+            background:
+                #0c0c0d;
+
             color: #ffffff;
+
             font-size: 16px;
+
             outline: none;
         }
 
+
         input:focus,
         select:focus {
-            border-color: #77777f;
+
+            border-color:
+                #d52626;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(220,30,30,.10);
         }
+
+
+        input::placeholder {
+
+            color: #696970;
+        }
+
+
+        /* =========================
+           WARNING
+        ========================= */
 
         .warning {
-            background: #211e18;
-            border: 1px solid #403827;
-            color: #e6d19a;
-            padding: 13px;
-            border-radius: 13px;
-            margin-top: 14px;
-            font-size: 13px;
-            line-height: 1.45;
-        }
 
-        .info {
-            background: #181d22;
-            border: 1px solid #29333d;
-            color: #b9c8d6;
-            padding: 13px;
-            border-radius: 13px;
-            margin-top: 12px;
-            font-size: 13px;
-            line-height: 1.45;
-        }
+            background:
+                #241616;
 
-        .hidden {
-            display: none !important;
-        }
+            border:
+                1px solid #4b2828;
 
-        .back {
-            margin-top: 18px;
-        }
+            color:
+                #e6aaaa;
 
-        .profile-line {
-            padding: 12px 0;
-            border-bottom: 1px solid #29292e;
-        }
-
-        .profile-line:last-child {
-            border-bottom: none;
-        }
-
-        .profile-label {
-            color: #909097;
-            font-size: 13px;
-        }
-
-        .profile-value {
-            margin-top: 3px;
-            font-size: 16px;
-        }
-
-        .order {
-            background: #121214;
-            border: 1px solid #29292e;
-            border-radius: 15px;
             padding: 14px;
-            margin-top: 10px;
-        }
 
-        .order-title {
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
+            border-radius: 14px;
 
-        .order-info {
-            color: #a7a7ae;
+            margin-top: 14px;
+
             font-size: 13px;
-            line-height: 1.6;
-        }
 
-        .bottom-nav {
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(20, 20, 23, .97);
-            border-top: 1px solid #29292e;
-            padding: 7px 7px calc(7px + env(safe-area-inset-bottom));
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-        }
-
-        .nav-button {
-            width: auto;
-            flex: 1;
-            margin: 0;
-            padding: 8px 3px;
-            background: transparent;
-            color: #8e8e95;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .nav-button.active {
-            color: #ffffff;
-        }
-
-        .nav-icon {
-            font-size: 19px;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .success {
-            text-align: center;
-            padding: 20px 5px;
-        }
-
-        .success-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .success-title {
-            font-size: 21px;
-            font-weight: 800;
-        }
-
-        .success-text {
-            color: #a5a5ac;
-            margin-top: 8px;
             line-height: 1.5;
         }
+
+
+        .info {
+
+            background:
+                #171216;
+
+            border:
+                1px solid #362126;
+
+            color:
+                #c6aeb2;
+
+            padding: 14px;
+
+            border-radius: 14px;
+
+            margin-top: 12px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile-line {
+
+            padding:
+                13px
+                0;
+
+            border-bottom:
+                1px solid #292022;
+        }
+
+
+        .profile-line:last-child {
+
+            border-bottom:
+                none;
+        }
+
+
+        .profile-label {
+
+            color:
+                #77777e;
+
+            font-size:
+                12px;
+        }
+
+
+        .profile-value {
+
+            margin-top:
+                4px;
+
+            font-size:
+                16px;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =========================
+           ORDERS
+        ========================= */
+
+        .order {
+
+            background:
+                #0d0d0e;
+
+            border:
+                1px solid #302022;
+
+            border-radius:
+                16px;
+
+            padding:
+                14px;
+
+            margin-top:
+                10px;
+        }
+
+
+        .order-title {
+
+            font-weight:
+                800;
+
+            margin-bottom:
+                7px;
+
+            color:
+                #ffffff;
+        }
+
+
+        .order-info {
+
+            color:
+                #99999f;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        .success {
+
+            text-align:
+                center;
+
+            padding:
+                22px 5px;
+        }
+
+
+        .success-icon {
+
+            font-size:
+                52px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .success-title {
+
+            font-size:
+                22px;
+
+            font-weight:
+                900;
+        }
+
+
+        .success-text {
+
+            color:
+                #99999f;
+
+            margin-top:
+                9px;
+
+            line-height:
+                1.5;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back {
+
+            margin-top:
+                18px;
+        }
+
+
+        /* =========================
+           BOTTOM NAVIGATION
+        ========================= */
+
+        .bottom-nav {
+
+            position:
+                fixed;
+
+            z-index:
+                100;
+
+            left:
+                0;
+
+            right:
+                0;
+
+            bottom:
+                0;
+
+            background:
+                rgba(10,8,9,.96);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            border-top:
+                1px solid #302022;
+
+            padding:
+                7px
+                7px
+                calc(
+                    7px +
+                    env(safe-area-inset-bottom)
+                );
+
+            display:
+                flex;
+
+            gap:
+                3px;
+        }
+
+
+        .nav-button {
+
+            width:
+                auto;
+
+            flex:
+                1;
+
+            margin:
+                0;
+
+            padding:
+                8px 3px;
+
+            background:
+                transparent;
+
+            border:
+                none;
+
+            color:
+                #68686f;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                none;
+        }
+
+
+        .nav-button.active {
+
+            color:
+                #ff3030;
+
+            background:
+                rgba(255,40,40,.07);
+
+            border-radius:
+                12px;
+        }
+
+
+        .nav-icon {
+
+            font-size:
+                19px;
+
+            display:
+                block;
+
+            margin-bottom:
+                3px;
+        }
+
+
+        /* =========================
+           UTILITIES
+        ========================= */
+
+        .hidden {
+            display:
+                none !important;
+        }
+
     </style>
 </head>
 
+
 <body>
+
 
 <div class="app">
 
+
     <!-- HEADER -->
+
     <div class="header">
-        <div class="logo">⭐️ Stars KG</div>
+
+        <div class="logo">
+            ⭐️ Stars KG
+        </div>
+
         <div class="subtitle">
             Stars и Premium — всё в одном месте
         </div>
+
     </div>
 
 
-    <!-- ================= HOME ================= -->
 
-    <section id="home" class="page active">
+    <!-- =========================
+         HOME
+    ========================= -->
+
+    <section
+        id="home"
+        class="page active">
+
 
         <div class="card">
-            <div class="card-title">⭐️ Stars</div>
+
+            <div class="card-title">
+                ⭐️ Stars
+            </div>
 
             <div class="description">
-                Покупайте и продавайте Telegram Stars
-                быстро и удобно.
+                Покупайте и продавайте
+                Telegram Stars быстро и удобно.
             </div>
+
 
             <div class="rate">
-                Купить: <b>100 ⭐️ от 1.47$</b><br>
-                Продать: <b>100 ⭐️ = 1.07$</b>
+
+                Купить:
+                <b>100 ⭐️ от 1.47$</b>
+
+                <br>
+
+                Продать:
+                <b>100 ⭐️ = 1.07$</b>
+
             </div>
 
-            <button onclick="openPage('buy')">
+
+            <button
+                onclick="openPage('buy')">
+
                 ⭐️ Купить Stars
+
             </button>
 
-            <button class="secondary" onclick="openPage('sell')">
+
+            <button
+                class="secondary"
+                onclick="openPage('sell')">
+
                 💰 Продать Stars
+
             </button>
+
         </div>
 
 
-        <div class="card">
-            <div class="card-title">💎 Premium</div>
 
-            <div class="description">
-                Telegram Premium на 3, 6 или 12 месяцев.
+        <div class="card">
+
+            <div class="card-title">
+                💎 Premium
             </div>
 
-            <button onclick="openPage('premium')">
+            <div class="description">
+                Telegram Premium на
+                3, 6 или 12 месяцев.
+            </div>
+
+
+            <button
+                onclick="openPage('premium')">
+
                 💎 Купить Premium
+
             </button>
+
         </div>
 
     </section>
 
 
-    <!-- ================= BUY STARS ================= -->
 
-    <section id="buy" class="page">
+    <!-- =========================
+         BUY STARS
+    ========================= -->
+
+    <section
+        id="buy"
+        class="page">
+
 
         <div class="card">
 
@@ -329,89 +792,127 @@
                 ⭐️ Купить Stars
             </div>
 
+
             <div class="description">
-                Минимальная покупка — 100 Stars.
+                Минимальная покупка —
+                100 Stars.
             </div>
 
-            <label>
-                <div class="description" style="margin-top:15px;">
-                    Количество Stars
-                </div>
 
-                <input
-                    id="starsQuantity"
-                    type="number"
-                    min="100"
-                    step="100"
-                    value="100"
-                    oninput="calculateStarsPrice()"
-                >
-            </label>
+            <div
+                class="description"
+                style="margin-top:15px;">
+
+                Количество Stars
+
+            </div>
 
 
-            <div class="description" style="margin-top:15px;">
+            <input
+                id="starsQuantity"
+                type="number"
+                min="100"
+                step="100"
+                value="100"
+                oninput="calculateStarsPrice()">
+
+
+
+            <div
+                class="description"
+                style="margin-top:15px;">
+
                 Для кого?
+
             </div>
+
 
             <div class="row">
 
                 <button
                     id="selfButton"
                     onclick="setBuyRecipient('self')">
+
                     Себе
+
                 </button>
+
 
                 <button
                     id="friendButton"
                     class="secondary"
                     onclick="setBuyRecipient('friend')">
+
                     Для друга
+
                 </button>
 
             </div>
 
 
-            <div id="friendBlock" class="hidden">
+
+            <div
+                id="friendBlock"
+                class="hidden">
 
                 <input
                     id="friendUsername"
                     type="text"
-                    placeholder="@username получателя"
-                >
+                    placeholder="@username получателя">
 
             </div>
 
 
-            <div class="price" id="starsPrice">
+
+            <div
+                class="price"
+                id="starsPrice">
+
                 1.47$
+
             </div>
 
-
-            <div class="description">
-                ≈ сумма рассчитывается автоматически
-            </div>
 
 
             <div class="warning">
-                ⚠️ <b>Внимание!</b><br><br>
 
-                Перед оплатой внимательно проверьте
-                количество Stars и username получателя.<br><br>
+                ⚠️ <b>Внимание!</b>
 
-                Оплатить необходимо полную сумму.<br><br>
+                <br><br>
 
-                Возврат денежных средств не производится.
+                Перед оплатой внимательно
+                проверьте количество Stars
+                и username получателя.
+
+                <br><br>
+
+                Оплатить необходимо
+                полную сумму.
+
+                <br><br>
+
+                Возврат денежных средств
+                не производится.
+
             </div>
 
 
-            <button onclick="createStarsOrder()">
+
+            <button
+                onclick="createStarsOrder()">
+
                 ⭐️ Создать заказ
+
             </button>
+
+
 
             <button
                 class="secondary back"
                 onclick="openPage('home')">
+
                 ← Назад
+
             </button>
 
         </div>
@@ -419,9 +920,15 @@
     </section>
 
 
-    <!-- ================= SELL STARS ================= -->
 
-    <section id="sell" class="page">
+    <!-- =========================
+         SELL STARS
+    ========================= -->
+
+    <section
+        id="sell"
+        class="page">
+
 
         <div class="card">
 
@@ -429,14 +936,23 @@
                 💰 Продать Stars
             </div>
 
+
             <div class="description">
-                Мы покупаем Stars у пользователей.
+
+                Мы покупаем Stars
+                у пользователей.
+
             </div>
 
 
-            <div class="description" style="margin-top:15px;">
+            <div
+                class="description"
+                style="margin-top:15px;">
+
                 Количество Stars
+
             </div>
+
 
             <input
                 id="sellQuantity"
@@ -444,22 +960,32 @@
                 min="100"
                 step="100"
                 value="100"
-                oninput="calculateSellPrice()"
-            >
+                oninput="calculateSellPrice()">
 
 
-            <div class="price" id="sellPrice">
+
+            <div
+                class="price"
+                id="sellPrice">
+
                 1.07$
+
             </div>
 
 
             <div class="description">
+
                 Минимум — 100 Stars
+
             </div>
 
 
-            <div class="description" style="margin-top:15px;">
+            <div
+                class="description"
+                style="margin-top:15px;">
+
                 Куда получить выплату?
+
             </div>
 
 
@@ -481,27 +1007,37 @@
 
 
             <div class="info">
-                После выбора банка отправляйте
-                <b>только QR-код</b> для выплаты.
+
+                💳 После выбора банка
+                отправляйте <b>только QR-код</b>
+                для выплаты.
+
             </div>
 
 
             <div class="warning">
-                ⚠️ Перед продажей может потребоваться
-                скриншот, подтверждающий место покупки
-                Stars.
+
+                ⚠️ Перед продажей может
+                потребоваться скриншот,
+                подтверждающий место покупки Stars.
+
             </div>
 
 
-            <button onclick="createSellOrder()">
+            <button
+                onclick="createSellOrder()">
+
                 💰 Создать заявку
+
             </button>
 
 
             <button
                 class="secondary back"
                 onclick="openPage('home')">
+
                 ← Назад
+
             </button>
 
         </div>
@@ -509,9 +1045,15 @@
     </section>
 
 
-    <!-- ================= PREMIUM ================= -->
 
-    <section id="premium" class="page">
+    <!-- =========================
+         PREMIUM
+    ========================= -->
+
+    <section
+        id="premium"
+        class="page">
+
 
         <div class="card">
 
@@ -519,8 +1061,11 @@
                 💎 Telegram Premium
             </div>
 
+
             <div class="description">
+
                 Для кого хотите приобрести Premium?
+
             </div>
 
 
@@ -529,54 +1074,81 @@
                 <button
                     id="premiumSelf"
                     onclick="setPremiumRecipient('self')">
+
                     Себе
+
                 </button>
+
 
                 <button
                     id="premiumFriend"
                     class="secondary"
                     onclick="setPremiumRecipient('friend')">
+
                     Для друга
+
                 </button>
 
             </div>
 
 
-            <div id="premiumFriendBlock" class="hidden">
+            <div
+                id="premiumFriendBlock"
+                class="hidden">
 
                 <input
                     id="premiumUsername"
                     type="text"
-                    placeholder="@username получателя"
-                >
+                    placeholder="@username получателя">
 
             </div>
 
 
-            <button onclick="createPremiumOrder(3)">
+
+            <button
+                onclick="createPremiumOrder(3)">
+
                 💎 3 месяца — 15.22$
+
             </button>
 
-            <button onclick="createPremiumOrder(6)">
+
+            <button
+                onclick="createPremiumOrder(6)">
+
                 💎 6 месяцев — 23.00$
+
             </button>
 
-            <button onclick="createPremiumOrder(12)">
+
+            <button
+                onclick="createPremiumOrder(12)">
+
                 💎 12 месяцев — 38.40$
+
             </button>
+
 
 
             <div class="warning">
+
                 ⚠️ Перед подтверждением заказа
-                внимательно проверьте срок и username.
+                внимательно проверьте срок
+                и username.
+
+                <br><br>
+
                 Оплата производится полностью.
+
             </div>
 
 
             <button
                 class="secondary back"
                 onclick="openPage('home')">
+
                 ← Назад
+
             </button>
 
         </div>
@@ -584,9 +1156,15 @@
     </section>
 
 
-    <!-- ================= PROFILE ================= -->
 
-    <section id="profile" class="page">
+    <!-- =========================
+         PROFILE
+    ========================= -->
+
+    <section
+        id="profile"
+        class="page">
+
 
         <div class="card">
 
@@ -594,7 +1172,9 @@
                 👤 Профиль
             </div>
 
+
             <div class="profile-line">
+
                 <div class="profile-label">
                     Имя
                 </div>
@@ -602,12 +1182,16 @@
                 <div
                     class="profile-value"
                     id="profileName">
+
                     —
+
                 </div>
+
             </div>
 
 
             <div class="profile-line">
+
                 <div class="profile-label">
                     Username
                 </div>
@@ -615,12 +1199,16 @@
                 <div
                     class="profile-value"
                     id="profileUsername">
+
                     —
+
                 </div>
+
             </div>
 
 
             <div class="profile-line">
+
                 <div class="profile-label">
                     Telegram ID
                 </div>
@@ -628,11 +1216,15 @@
                 <div
                     class="profile-value"
                     id="profileId">
+
                     —
+
                 </div>
+
             </div>
 
         </div>
+
 
 
         <div class="card">
@@ -641,8 +1233,17 @@
                 📦 Заказы
             </div>
 
-            <button onclick="openPage('orders')">
+
+            <div class="description">
+                История ваших заказов.
+            </div>
+
+
+            <button
+                onclick="openPage('orders')">
+
                 📦 Мои заказы
+
             </button>
 
         </div>
@@ -650,15 +1251,22 @@
     </section>
 
 
-    <!-- ================= ORDERS ================= -->
 
-    <section id="orders" class="page">
+    <!-- =========================
+         ORDERS
+    ========================= -->
+
+    <section
+        id="orders"
+        class="page">
+
 
         <div class="card">
 
             <div class="card-title">
                 📦 Мои заказы
             </div>
+
 
             <div id="ordersList">
 
@@ -668,10 +1276,13 @@
 
             </div>
 
+
             <button
                 class="secondary back"
                 onclick="openPage('profile')">
+
                 ← Назад
+
             </button>
 
         </div>
@@ -679,9 +1290,15 @@
     </section>
 
 
-    <!-- ================= SUPPORT ================= -->
 
-    <section id="support" class="page">
+    <!-- =========================
+         SUPPORT
+    ========================= -->
+
+    <section
+        id="support"
+        class="page">
+
 
         <div class="card">
 
@@ -689,15 +1306,21 @@
                 💬 Поддержка
             </div>
 
+
             <div class="description">
-                Если у вас возник вопрос по покупке,
-                продаже или заказу — обратитесь
-                в поддержку.
+
+                Если возник вопрос по покупке,
+                продаже или заказу —
+                обратитесь в поддержку.
+
             </div>
 
 
-            <button onclick="openSupport()">
+            <button
+                onclick="openSupport()">
+
                 💬 Написать в поддержку
+
             </button>
 
         </div>
@@ -705,9 +1328,15 @@
     </section>
 
 
-    <!-- ================= SUCCESS ================= -->
 
-    <section id="success" class="page">
+    <!-- =========================
+         SUCCESS
+    ========================= -->
+
+    <section
+        id="success"
+        class="page">
+
 
         <div class="card">
 
@@ -717,26 +1346,39 @@
                     ✅
                 </div>
 
+
                 <div
                     class="success-title"
                     id="successTitle">
+
                     Заказ создан
+
                 </div>
+
 
                 <div
                     class="success-text"
                     id="successText">
+
                     Ваш заказ успешно создан.
+
                 </div>
 
-                <button onclick="openPage('orders')">
+
+                <button
+                    onclick="openPage('orders')">
+
                     📦 Мои заказы
+
                 </button>
+
 
                 <button
                     class="secondary"
                     onclick="openPage('home')">
+
                     🏠 На главную
+
                 </button>
 
             </div>
@@ -748,19 +1390,27 @@
 </div>
 
 
-<!-- ================= BOTTOM NAV ================= -->
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
 
 <div class="bottom-nav">
+
 
     <button
         class="nav-button active"
         id="navHome"
         onclick="openPage('home')">
 
-        <span class="nav-icon">🏠</span>
+        <span class="nav-icon">
+            🏠
+        </span>
+
         Главная
 
     </button>
+
 
 
     <button
@@ -768,10 +1418,14 @@
         id="navStars"
         onclick="openPage('buy')">
 
-        <span class="nav-icon">⭐️</span>
+        <span class="nav-icon">
+            ⭐️
+        </span>
+
         Stars
 
     </button>
+
 
 
     <button
@@ -779,10 +1433,14 @@
         id="navPremium"
         onclick="openPage('premium')">
 
-        <span class="nav-icon">💎</span>
+        <span class="nav-icon">
+            💎
+        </span>
+
         Premium
 
     </button>
+
 
 
     <button
@@ -790,10 +1448,14 @@
         id="navProfile"
         onclick="openPage('profile')">
 
-        <span class="nav-icon">👤</span>
+        <span class="nav-icon">
+            👤
+        </span>
+
         Профиль
 
     </button>
+
 
 
     <button
@@ -801,7 +1463,10 @@
         id="navSupport"
         onclick="openPage('support')">
 
-        <span class="nav-icon">💬</span>
+        <span class="nav-icon">
+            💬
+        </span>
+
         Поддержка
 
     </button>
@@ -809,83 +1474,132 @@
 </div>
 
 
+
 <script>
 
-    // ==========================================
+    // =========================================
     // TELEGRAM
-    // ==========================================
+    // =========================================
 
-    const tg = window.Telegram?.WebApp;
+    const tg =
+        window.Telegram?.WebApp;
+
 
     if (tg) {
+
         tg.ready();
+
         tg.expand();
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // VARIABLES
-    // ==========================================
+    // =========================================
 
-    let buyRecipient = "self";
-    let premiumRecipient = "self";
+    let buyRecipient =
+        "self";
 
 
-    // ==========================================
-    // PAGE NAVIGATION
-    // ==========================================
+    let premiumRecipient =
+        "self";
+
+
+
+    // =========================================
+    // NAVIGATION
+    // =========================================
 
     function openPage(page) {
+
 
         document
             .querySelectorAll(".page")
             .forEach(element => {
-                element.classList.remove("active");
+
+                element.classList
+                    .remove("active");
+
             });
 
 
-        const target = document.getElementById(page);
+        const target =
+            document.getElementById(page);
+
 
         if (target) {
-            target.classList.add("active");
+
+            target.classList
+                .add("active");
+
         }
 
 
         document
             .querySelectorAll(".nav-button")
             .forEach(button => {
-                button.classList.remove("active");
+
+                button.classList
+                    .remove("active");
+
             });
 
 
         if (page === "home") {
+
             document
                 .getElementById("navHome")
-                .classList.add("active");
+                .classList
+                .add("active");
+
         }
 
-        if (page === "buy" || page === "sell") {
+
+        if (
+            page === "buy" ||
+            page === "sell"
+        ) {
+
             document
                 .getElementById("navStars")
-                .classList.add("active");
+                .classList
+                .add("active");
+
         }
+
 
         if (page === "premium") {
+
             document
                 .getElementById("navPremium")
-                .classList.add("active");
+                .classList
+                .add("active");
+
         }
 
-        if (page === "profile" || page === "orders") {
+
+        if (
+            page === "profile" ||
+            page === "orders"
+        ) {
+
             document
                 .getElementById("navProfile")
-                .classList.add("active");
+                .classList
+                .add("active");
+
         }
 
+
         if (page === "support") {
+
             document
                 .getElementById("navSupport")
-                .classList.add("active");
+                .classList
+                .add("active");
+
         }
 
 
@@ -896,70 +1610,105 @@
 
 
         if (tg) {
-            tg.HapticFeedback?.impactOccurred("light");
+
+            tg.HapticFeedback
+                ?.impactOccurred("light");
+
         }
 
 
         if (page === "profile") {
+
             loadProfile();
+
         }
+
+
+        if (page === "orders") {
+
+            renderOrders();
+
+        }
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // BUY STARS
-    // ==========================================
+    // =========================================
 
     function setBuyRecipient(type) {
 
-        buyRecipient = type;
+        buyRecipient =
+            type;
 
-        const friendBlock =
-            document.getElementById("friendBlock");
 
-        const selfButton =
-            document.getElementById("selfButton");
+        const block =
+            document.getElementById(
+                "friendBlock"
+            );
 
-        const friendButton =
-            document.getElementById("friendButton");
+
+        const self =
+            document.getElementById(
+                "selfButton"
+            );
+
+
+        const friend =
+            document.getElementById(
+                "friendButton"
+            );
 
 
         if (type === "self") {
 
-            friendBlock.classList.add("hidden");
+            block.classList
+                .add("hidden");
 
-            selfButton.classList.remove("secondary");
-            friendButton.classList.add("secondary");
+            self.classList
+                .remove("secondary");
+
+            friend.classList
+                .add("secondary");
 
         } else {
 
-            friendBlock.classList.remove("hidden");
+            block.classList
+                .remove("hidden");
 
-            selfButton.classList.add("secondary");
-            friendButton.classList.remove("secondary");
+            self.classList
+                .add("secondary");
+
+            friend.classList
+                .remove("secondary");
+
         }
+
     }
+
 
 
     function calculateStarsPrice() {
 
         let quantity =
             Number(
-                document.getElementById("starsQuantity").value
+                document
+                    .getElementById(
+                        "starsQuantity"
+                    )
+                    .value
             );
 
 
-        if (!quantity || quantity < 100) {
+        if (
+            !quantity ||
+            quantity < 100
+        ) {
+
             quantity = 100;
-        }
 
-
-        quantity =
-            Math.floor(quantity / 100) * 100;
-
-
-        if (quantity < 100) {
-            quantity = 100;
         }
 
 
@@ -967,46 +1716,69 @@
             (quantity / 100) * 1.47;
 
 
-        document.getElementById("starsPrice")
+        document
+            .getElementById(
+                "starsPrice"
+            )
             .textContent =
             price.toFixed(2) + "$";
+
     }
+
 
 
     function createStarsOrder() {
 
         let quantity =
             Number(
-                document.getElementById("starsQuantity").value
+                document
+                    .getElementById(
+                        "starsQuantity"
+                    )
+                    .value
             );
 
 
-        if (!quantity || quantity < 100) {
+        if (
+            !quantity ||
+            quantity < 100
+        ) {
 
-            alert("Минимум — 100 Stars.");
+            alert(
+                "Минимум — 100 Stars."
+            );
 
             return;
+
         }
 
 
-        if (quantity % 100 !== 0) {
+        if (
+            quantity % 100 !== 0
+        ) {
 
             alert(
                 "Количество Stars должно быть кратно 100."
             );
 
             return;
+
         }
 
 
         let username = "";
 
 
-        if (buyRecipient === "friend") {
+        if (
+            buyRecipient ===
+            "friend"
+        ) {
 
             username =
                 document
-                    .getElementById("friendUsername")
+                    .getElementById(
+                        "friendUsername"
+                    )
                     .value
                     .trim();
 
@@ -1018,12 +1790,19 @@
                 );
 
                 return;
+
             }
 
 
-            if (!username.startsWith("@")) {
-                username = "@" + username;
+            if (
+                !username.startsWith("@")
+            ) {
+
+                username =
+                    "@" + username;
+
             }
+
         }
 
 
@@ -1031,35 +1810,37 @@
             (quantity / 100) * 1.47;
 
 
-        const text =
-            "⭐️ Заказ на " +
-            quantity +
-            " Stars\n\n" +
-            "Сумма: " +
-            price.toFixed(2) +
-            "$\n" +
-            "Получатель: " +
-            (
-                buyRecipient === "self"
-                    ? "Себе"
-                    : username
-            );
+        const recipient =
+            buyRecipient === "self"
+                ? "Себе"
+                : username;
 
 
         if (
             confirm(
-                text +
+                "⭐️ Заказ Stars\n\n" +
+
+                "Количество: " +
+                quantity +
+                " ⭐️\n\n" +
+
+                "Сумма: " +
+                price.toFixed(2) +
+                "$\n\n" +
+
+                "Получатель: " +
+                recipient +
+
                 "\n\nСоздать заказ?"
             )
         ) {
+
 
             saveLocalOrder(
                 "Stars",
                 quantity,
                 price,
-                buyRecipient === "self"
-                    ? "Себе"
-                    : username
+                recipient
             );
 
 
@@ -1069,78 +1850,109 @@
                 quantity +
                 " Stars создан."
             );
+
         }
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // SELL STARS
-    // ==========================================
+    // =========================================
 
     function calculateSellPrice() {
 
         let quantity =
             Number(
-                document.getElementById("sellQuantity").value
+                document
+                    .getElementById(
+                        "sellQuantity"
+                    )
+                    .value
             );
 
 
-        if (!quantity || quantity < 100) {
+        if (
+            !quantity ||
+            quantity < 100
+        ) {
+
             quantity = 100;
+
         }
-
-
-        quantity =
-            Math.floor(quantity / 100) * 100;
 
 
         const price =
             (quantity / 100) * 1.07;
 
 
-        document.getElementById("sellPrice")
+        document
+            .getElementById(
+                "sellPrice"
+            )
             .textContent =
             price.toFixed(2) + "$";
+
     }
+
 
 
     function createSellOrder() {
 
         let quantity =
             Number(
-                document.getElementById("sellQuantity").value
+                document
+                    .getElementById(
+                        "sellQuantity"
+                    )
+                    .value
             );
 
 
         const bank =
-            document.getElementById("sellBank").value;
+            document
+                .getElementById(
+                    "sellBank"
+                )
+                .value;
 
 
-        if (!quantity || quantity < 100) {
+        if (
+            !quantity ||
+            quantity < 100
+        ) {
 
-            alert("Минимум — 100 Stars.");
+            alert(
+                "Минимум — 100 Stars."
+            );
 
             return;
+
         }
 
 
-        if (quantity % 100 !== 0) {
+        if (
+            quantity % 100 !== 0
+        ) {
 
             alert(
                 "Количество Stars должно быть кратно 100."
             );
 
             return;
+
         }
 
 
         if (!bank) {
 
             alert(
-                "Сначала выберите банк."
+                "Выберите банк."
             );
 
             return;
+
         }
 
 
@@ -1150,18 +1962,23 @@
 
         if (
             confirm(
-                "💰 Продать " +
+                "💰 Продажа Stars\n\n" +
+
+                "Количество: " +
                 quantity +
-                " Stars?\n\n" +
+                " ⭐️\n\n" +
+
                 "Выплата: " +
                 price.toFixed(2) +
-                "$\n" +
+                "$\n\n" +
+
                 "Банк: " +
                 bank +
-                "\n\n" +
-                "После создания заявки отправьте только QR."
+
+                "\n\nСоздать заявку?"
             )
         ) {
+
 
             saveLocalOrder(
                 "Продажа Stars",
@@ -1175,23 +1992,23 @@
                 "💰 Заявка создана",
                 "Заявка на продажу " +
                 quantity +
-                " Stars создана.\n\n" +
-                "Банк: " +
-                bank +
-                "\n\n" +
-                "Следующим шагом подключим отправку заявки прямо в бот."
+                " Stars создана."
             );
+
         }
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // PREMIUM
-    // ==========================================
+    // =========================================
 
     function setPremiumRecipient(type) {
 
-        premiumRecipient = type;
+        premiumRecipient =
+            type;
 
 
         const block =
@@ -1214,37 +2031,56 @@
 
         if (type === "self") {
 
-            block.classList.add("hidden");
+            block.classList
+                .add("hidden");
 
-            self.classList.remove("secondary");
-            friend.classList.add("secondary");
+            self.classList
+                .remove("secondary");
+
+            friend.classList
+                .add("secondary");
 
         } else {
 
-            block.classList.remove("hidden");
+            block.classList
+                .remove("hidden");
 
-            self.classList.add("secondary");
-            friend.classList.remove("secondary");
+            self.classList
+                .add("secondary");
+
+            friend.classList
+                .remove("secondary");
+
         }
+
     }
+
 
 
     function createPremiumOrder(months) {
 
         const prices = {
+
             3: 15.22,
+
             6: 23.00,
+
             12: 38.40
+
         };
 
 
-        const price = prices[months];
+        const price =
+            prices[months];
 
 
         let username = "";
 
 
-        if (premiumRecipient === "friend") {
+        if (
+            premiumRecipient ===
+            "friend"
+        ) {
 
             username =
                 document
@@ -1262,41 +2098,53 @@
                 );
 
                 return;
+
             }
 
 
-            if (!username.startsWith("@")) {
-                username = "@" + username;
+            if (
+                !username.startsWith("@")
+            ) {
+
+                username =
+                    "@" + username;
+
             }
+
         }
+
+
+        const recipient =
+            premiumRecipient === "self"
+                ? "Себе"
+                : username;
 
 
         if (
             confirm(
                 "💎 Premium\n\n" +
+
                 "Срок: " +
                 months +
-                " месяцев\n" +
+                " месяцев\n\n" +
+
                 "Цена: " +
                 price.toFixed(2) +
-                "$\n" +
+                "$\n\n" +
+
                 "Получатель: " +
-                (
-                    premiumRecipient === "self"
-                        ? "Себе"
-                        : username
-                ) +
+                recipient +
+
                 "\n\nСоздать заказ?"
             )
         ) {
+
 
             saveLocalOrder(
                 "Premium",
                 months,
                 price,
-                premiumRecipient === "self"
-                    ? "Себе"
-                    : username
+                recipient
             );
 
 
@@ -1306,13 +2154,16 @@
                 months +
                 " месяцев создан."
             );
+
         }
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // PROFILE
-    // ==========================================
+    // =========================================
 
     function loadProfile() {
 
@@ -1322,49 +2173,69 @@
 
         if (!user) {
 
-            document.getElementById(
-                "profileName"
-            ).textContent = "Не определено";
+            document
+                .getElementById(
+                    "profileName"
+                )
+                .textContent =
+                "Не определено";
 
 
-            document.getElementById(
-                "profileUsername"
-            ).textContent = "Откройте Mini App в Telegram";
+            document
+                .getElementById(
+                    "profileUsername"
+                )
+                .textContent =
+                "Откройте Mini App в Telegram";
 
 
-            document.getElementById(
-                "profileId"
-            ).textContent = "—";
+            document
+                .getElementById(
+                    "profileId"
+                )
+                .textContent =
+                "—";
 
 
             return;
+
         }
 
 
-        document.getElementById(
-            "profileName"
-        ).textContent =
-            user.first_name || "—";
+        document
+            .getElementById(
+                "profileName"
+            )
+            .textContent =
+            user.first_name ||
+            "—";
 
 
-        document.getElementById(
-            "profileUsername"
-        ).textContent =
+        document
+            .getElementById(
+                "profileUsername"
+            )
+            .textContent =
             user.username
                 ? "@" + user.username
                 : "без username";
 
 
-        document.getElementById(
-            "profileId"
-        ).textContent =
-            user.id || "—";
+        document
+            .getElementById(
+                "profileId"
+            )
+            .textContent =
+            user.id ||
+            "—";
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // LOCAL ORDERS
-    // ==========================================
+    // =========================================
 
     function getOrders() {
 
@@ -1379,8 +2250,11 @@
         } catch {
 
             return [];
+
         }
+
     }
+
 
 
     function saveLocalOrder(
@@ -1394,7 +2268,7 @@
             getOrders();
 
 
-        const order = {
+        orders.unshift({
 
             id:
                 Date.now(),
@@ -1412,15 +2286,15 @@
                 recipient,
 
             status:
-                "Ожидает оплаты",
+                "Ожидает обработки",
 
             date:
                 new Date()
-                    .toLocaleString("ru-RU")
-        };
+                    .toLocaleString(
+                        "ru-RU"
+                    )
 
-
-        orders.unshift(order);
+        });
 
 
         localStorage.setItem(
@@ -1430,15 +2304,18 @@
 
 
         renderOrders();
+
     }
+
 
 
     function renderOrders() {
 
         const list =
-            document.getElementById(
-                "ordersList"
-            );
+            document
+                .getElementById(
+                    "ordersList"
+                );
 
 
         const orders =
@@ -1453,6 +2330,7 @@
                 '</div>';
 
             return;
+
         }
 
 
@@ -1461,73 +2339,133 @@
                 .map(order => {
 
                     return `
+
                         <div class="order">
 
                             <div class="order-title">
-                                #${order.id} — ${order.product}
+
+                                #${order.id}
+                                —
+                                ${escapeHtml(
+                                    order.product
+                                )}
+
                             </div>
+
 
                             <div class="order-info">
 
                                 Количество:
-                                ${order.quantity}<br>
+                                ${order.quantity}
+
+                                <br>
 
                                 Сумма:
-                                ${Number(order.price).toFixed(2)}$<br>
+                                ${Number(
+                                    order.price
+                                ).toFixed(2)}$
+
+                                <br>
 
                                 Получатель:
-                                ${escapeHtml(order.recipient)}<br>
+                                ${escapeHtml(
+                                    order.recipient
+                                )}
+
+                                <br>
 
                                 Статус:
-                                ${order.status}<br>
+                                ${escapeHtml(
+                                    order.status
+                                )}
+
+                                <br>
 
                                 Дата:
-                                ${order.date}
+                                ${escapeHtml(
+                                    order.date
+                                )}
 
                             </div>
 
                         </div>
+
                     `;
 
                 })
                 .join("");
+
     }
+
 
 
     function escapeHtml(value) {
 
         return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+
+            .replaceAll(
+                "&",
+                "&amp;"
+            )
+
+            .replaceAll(
+                "<",
+                "&lt;"
+            )
+
+            .replaceAll(
+                ">",
+                "&gt;"
+            )
+
+            .replaceAll(
+                '"',
+                "&quot;"
+            )
+
+            .replaceAll(
+                "'",
+                "&#039;"
+            );
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // SUCCESS
-    // ==========================================
+    // =========================================
 
-    function showSuccess(title, text) {
+    function showSuccess(
+        title,
+        text
+    ) {
 
-        document.getElementById(
-            "successTitle"
-        ).textContent = title;
+        document
+            .getElementById(
+                "successTitle"
+            )
+            .textContent =
+            title;
 
 
-        document.getElementById(
-            "successText"
-        ).textContent = text;
+        document
+            .getElementById(
+                "successText"
+            )
+            .textContent =
+            text;
 
 
         openPage("success");
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // SUPPORT
-    // ==========================================
+    // =========================================
 
     function openSupport() {
 
@@ -1535,27 +2473,40 @@
             "https://t.me/ononoim";
 
 
-        if (tg?.openTelegramLink) {
+        if (
+            tg?.openTelegramLink
+        ) {
 
-            tg.openTelegramLink(url);
+            tg.openTelegramLink(
+                url
+            );
 
         } else {
 
-            window.open(url, "_blank");
+            window.open(
+                url,
+                "_blank"
+            );
+
         }
+
     }
 
 
-    // ==========================================
+
+    // =========================================
     // START
-    // ==========================================
+    // =========================================
 
     calculateStarsPrice();
+
     calculateSellPrice();
+
     renderOrders();
+
     loadProfile();
 
 </script>
 
 </body>
-              </html>
+    </html>

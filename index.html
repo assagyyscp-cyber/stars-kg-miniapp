@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Stars KG</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", sans-serif;
+      background: #f5f5f7;
+      color: #111;
+      padding-bottom: 90px;
+    }
+
+    .header {
+      padding: 28px 20px 18px;
+      background: #fff;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+
+    .hello {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 5px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      margin-top: 7px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.05);
+    }
+
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 19px;
+      font-weight: 750;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .button {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 14px;
+      margin-top: 15px;
+      background: #111;
+      color: white;
+      font-size: 15px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .button:active {
+      transform: scale(.98);
+    }
+
+    .rate {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .rate:last-child {
+      border-bottom: 0;
+    }
+
+    .price {
+      font-weight: 700;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid #ddd;
+      z-index: 100;
+    }
+
+    .nav-item {
+      border: 0;
+      background: none;
+      color: #777;
+      font-size: 11px;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .nav-item span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .nav-item.active {
+      color: #111;
+      font-weight: 700;
+    }
+
+    .option {
+      background: #fff;
+      border-radius: 17px;
+      padding: 17px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ГЛАВНАЯ -->
+<div id="home" class="page active">
+
+  <div class="header">
+    <div class="hello" id="hello">
+      Добро пожаловать 👋
+    </div>
+
+    <div class="title">
+      Stars KG
+    </div>
+
+    <div class="subtitle">
+      Stars и Premium — всё в одном месте.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ЗВЁЗДЫ -->
+    <div class="card">
+
+      <div class="card-icon">
+        ⭐️
+      </div>
+
+      <div class="card-title">
+        Telegram Stars
+      </div>
+
+      <div class="card-text">
+        Покупка и продажа Telegram Stars.
+      </div>
+
+      <button class="button" onclick="openPage('stars')">
+        Открыть
+      </button>
+
+    </div>
+
+
+    <!-- PREMIUM -->
+    <div class="card">
+
+      <div class="card-icon">
+        💎
+      </div>
+
+      <div class="card-title">
+        Telegram Premium
+      </div>
+
+      <div class="card-text">
+        Premium на 3, 6 или 12 месяцев.
+      </div>
+
+      <button class="button" onclick="openPage('premium')">
+        Купить Premium
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ЗВЁЗДЫ -->
+<div id="stars" class="page">
+
+  <div class="header">
+
+    <div class="title">
+      ⭐️ Звёзды
+    </div>
+
+    <div class="subtitle">
+      Обмен Telegram Stars
+    </div>
+
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+
+      <div class="card-title">
+        Текущие курсы
+      </div>
+
+      <div class="rate">
+        <span>Купить 100 ⭐️</span>
+        <span class="price">1.47$</span>
+      </div>
+
+      <div class="rate">
+        <span>Продать 100 ⭐️</span>
+        <span class="price">1.07$</span>
+      </div>
+
+      <button class="button" onclick="buyStars()">
+        ⭐️ Купить Stars
+      </button>
+
+      <button class="button" onclick="sellStars()">
+        💰 Продать Stars
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- PREMIUM -->
+<div id="premium" class="page">
+
+  <div class="header">
+
+    <div class="title">
+      💎 Premium
+    </div>
+
+    <div class="subtitle">
+      Telegram Premium
+    </div>
+
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+
+      <div class="card-title">
+        Для кого хотите приобрести?
+      </div>
+
+      <div class="option" onclick="premiumChoice('self')">
+        👤 Для себя
+      </div>
+
+      <div class="option" onclick="premiumChoice('friend')">
+        👥 Для друга
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ПРОФИЛЬ -->
+<div id="profile" class="page">
+
+  <div class="header">
+
+    <div class="title">
+      👤 Профиль
+    </div>
+
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+
+      <div class="card-title" id="profileName">
+        Пользователь
+      </div>
+
+      <div class="card-text" id="profileUsername">
+        Username не найден
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+        📦 Мои заказы
+      </div>
+
+      <div class="card-text">
+        Здесь будут отображаться ваши покупки.
+      </div>
+
+      <button class="button" onclick="showOrders()">
+        Посмотреть заказы
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ПОДДЕРЖКА -->
+<div id="support" class="page">
+
+  <div class="header">
+
+    <div class="title">
+      💬 Поддержка
+    </div>
+
+    <div class="subtitle">
+      Поможем решить вопрос
+    </div>
+
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+
+      <div class="card-title">
+        Нужна помощь?
+      </div>
+
+      <div class="card-text">
+        Свяжитесь с поддержкой по любому вопросу.
+      </div>
+
+      <button class="button" onclick="support()">
+        💬 Написать в поддержку
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- НИЖНЕЕ МЕНЮ -->
+<div class="bottom-nav">
+
+  <button class="nav-item active" onclick="openPage('stars', this)">
+    <span>⭐️</span>
+    Звёзды
+  </button>
+
+  <button class="nav-item" onclick="openPage('premium', this)">
+    <span>💎</span>
+    Premium
+  </button>
+
+  <button class="nav-item" onclick="openPage('profile', this)">
+    <span>👤</span>
+    Профиль
+  </button>
+
+  <button class="nav-item" onclick="openPage('support', this)">
+    <span>💬</span>
+    Поддержка
+  </button>
+
+</div>
+
+
+<script>
+
+  const tg = window.Telegram.WebApp;
+
+  tg.ready();
+  tg.expand();
+
+
+  // Данные пользователя Telegram
+
+  if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+
+    const user = tg.initDataUnsafe.user;
+
+    document.getElementById("hello").innerText =
+      "Привет, " + (user.first_name || "пользователь") + " 👋";
+
+    document.getElementById("profileName").innerText =
+      user.first_name || "Пользователь";
+
+    if (user.username) {
+
+      document.getElementById("profileUsername").innerText =
+        "@" + user.username;
+
+    } else {
+
+      document.getElementById("profileUsername").innerText =
+        "Username не установлен";
+
+    }
+
+  }
+
+
+  // Переключение страниц
+
+  function openPage(page, button) {
+
+    document.querySelectorAll(".page").forEach(p => {
+      p.classList.remove("active");
+    });
+
+    document.getElementById(page).classList.add("active");
+
+    document.querySelectorAll(".nav-item").forEach(b => {
+      b.classList.remove("active");
+    });
+
+    if (button) {
+      button.classList.add("active");
+    }
+
+  }
+
+
+  // Покупка Stars
+
+  function buyStars() {
+
+    tg.showAlert(
+      "⭐️ Покупка Stars\n\n" +
+      "Минимальная покупка — 100 Stars.\n\n" +
+      "Дальше подключим выбор количества и оплату."
+    );
+
+  }
+
+
+  // Продажа Stars
+
+  function sellStars() {
+
+    tg.showAlert(
+      "💰 Продажа Stars\n\n" +
+      "Минимум — 100 Stars.\n\n" +
+      "После выбора количества можно будет выбрать MBank или Optima 24."
+    );
+
+  }
+
+
+  // Premium
+
+  function premiumChoice(type) {
+
+    let text =
+      "💎 Выберите срок Premium:\n\n" +
+      "3 месяца — 15.22$\n" +
+      "6 месяцев — 23$\n" +
+      "12 месяцев — 38.40$";
+
+    tg.showAlert(text);
+
+  }
+
+
+  // Заказы
+
+  function showOrders() {
+
+    tg.showAlert(
+      "📦 Пока заказов нет."
+    );
+
+  }
+
+
+  // Поддержка
+
+  function support() {
+
+    tg.openTelegramLink(
+      "https://t.me/ononoim"
+    );
+
+  }
+
+</script>
+
+</body>
+    </html>

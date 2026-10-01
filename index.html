@@ -16,23 +16,30 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                   "Segoe UI", sans-serif;
       background: #f5f5f7;
       color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", sans-serif;
       padding-bottom: 90px;
     }
 
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
     .header {
-      padding: 28px 20px 18px;
       background: #fff;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
+      padding: 28px 20px 20px;
+      border-radius: 0 0 24px 24px;
     }
 
     .hello {
-      font-size: 15px;
       color: #777;
+      font-size: 14px;
       margin-bottom: 5px;
     }
 
@@ -45,6 +52,7 @@
       margin-top: 7px;
       color: #777;
       font-size: 14px;
+      line-height: 1.4;
     }
 
     .content {
@@ -59,38 +67,70 @@
       box-shadow: 0 4px 18px rgba(0,0,0,.05);
     }
 
-    .card-icon {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
     .card-title {
       font-size: 19px;
       font-weight: 750;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .card-text {
       color: #777;
       font-size: 14px;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .button {
       width: 100%;
-      border: 0;
+      border: none;
       border-radius: 15px;
-      padding: 14px;
-      margin-top: 15px;
+      padding: 15px;
+      margin-top: 12px;
       background: #111;
-      color: white;
+      color: #fff;
       font-size: 15px;
-      font-weight: 650;
+      font-weight: 700;
       cursor: pointer;
     }
 
     .button:active {
       transform: scale(.98);
+    }
+
+    .button.secondary {
+      background: #eee;
+      color: #111;
+    }
+
+    .input {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 14px;
+      padding: 15px;
+      margin-top: 10px;
+      font-size: 16px;
+      outline: none;
+      background: #fafafa;
+    }
+
+    .input:focus {
+      border-color: #111;
+      background: #fff;
+    }
+
+    .choice {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .choice.selected {
+      border: 2px solid #111;
+      padding: 15px;
     }
 
     .rate {
@@ -106,70 +146,92 @@
     }
 
     .price {
-      font-weight: 700;
+      font-weight: 750;
     }
 
-    .page {
-      display: none;
+    .summary {
+      background: #f5f5f7;
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 15px;
     }
 
-    .page.active {
-      display: block;
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 9px;
+      font-size: 14px;
+    }
+
+    .summary-row:last-child {
+      margin-bottom: 0;
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .warning {
+      background: #fff3cd;
+      color: #6d5500;
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .back {
+      border: none;
+      background: none;
+      padding: 0;
+      margin-bottom: 15px;
+      font-size: 15px;
+      font-weight: 600;
     }
 
     .bottom-nav {
       position: fixed;
-      bottom: 0;
       left: 0;
       right: 0;
+      bottom: 0;
       height: 76px;
-      background: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.95);
       backdrop-filter: blur(15px);
+      border-top: 1px solid #ddd;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      border-top: 1px solid #ddd;
       z-index: 100;
     }
 
     .nav-item {
-      border: 0;
+      border: none;
       background: none;
       color: #777;
       font-size: 11px;
       text-align: center;
-      padding: 5px;
     }
 
     .nav-item span {
       display: block;
-      font-size: 22px;
-      margin-bottom: 2px;
+      font-size: 21px;
+      margin-bottom: 3px;
     }
 
     .nav-item.active {
       color: #111;
       font-weight: 700;
     }
-
-    .option {
-      background: #fff;
-      border-radius: 17px;
-      padding: 17px;
-      margin-bottom: 10px;
-      font-size: 16px;
-      font-weight: 600;
-      border: 1px solid #eee;
-    }
   </style>
 </head>
 
 <body>
 
-<!-- ГЛАВНАЯ -->
+<!-- ================= ГЛАВНАЯ ================= -->
+
 <div id="home" class="page active">
 
   <div class="header">
+
     <div class="hello" id="hello">
       Добро пожаловать 👋
     </div>
@@ -181,16 +243,14 @@
     <div class="subtitle">
       Stars и Premium — всё в одном месте.
     </div>
+
   </div>
 
   <div class="content">
 
-    <!-- ЗВЁЗДЫ -->
     <div class="card">
 
-      <div class="card-icon">
-        ⭐️
-      </div>
+      <div style="font-size:32px;">⭐️</div>
 
       <div class="card-title">
         Telegram Stars
@@ -207,12 +267,9 @@
     </div>
 
 
-    <!-- PREMIUM -->
     <div class="card">
 
-      <div class="card-icon">
-        💎
-      </div>
+      <div style="font-size:32px;">💎</div>
 
       <div class="card-title">
         Telegram Premium
@@ -229,13 +286,19 @@
     </div>
 
   </div>
+
 </div>
 
 
-<!-- ЗВЁЗДЫ -->
+<!-- ================= ЗВЁЗДЫ ================= -->
+
 <div id="stars" class="page">
 
   <div class="header">
+
+    <button class="back" onclick="openPage('home')">
+      ← Назад
+    </button>
 
     <div class="title">
       ⭐️ Звёзды
@@ -257,39 +320,189 @@
 
       <div class="rate">
         <span>Купить 100 ⭐️</span>
-        <span class="price">1.47$</span>
+        <span class="price">$1.47</span>
       </div>
 
       <div class="rate">
         <span>Продать 100 ⭐️</span>
-        <span class="price">1.07$</span>
+        <span class="price">$1.07</span>
       </div>
 
-      <button class="button" onclick="buyStars()">
+    </div>
+
+
+    <div class="card">
+
+      <button class="button" onclick="openBuyStars()">
         ⭐️ Купить Stars
       </button>
 
-      <button class="button" onclick="sellStars()">
+      <button class="button secondary" onclick="sellStars()">
         💰 Продать Stars
       </button>
 
     </div>
 
   </div>
+
 </div>
 
 
-<!-- PREMIUM -->
+<!-- ================= ПОКУПКА STARS ================= -->
+
+<div id="buyStars" class="page">
+
+  <div class="header">
+
+    <button class="back" onclick="openPage('stars')">
+      ← Назад
+    </button>
+
+    <div class="title">
+      ⭐️ Купить Stars
+    </div>
+
+    <div class="subtitle">
+      Минимальная покупка — 100 Stars
+    </div>
+
+  </div>
+
+  <div class="content">
+
+    <div class="card">
+
+      <div class="card-title">
+        1. Количество Stars
+      </div>
+
+      <input
+        id="starsAmount"
+        class="input"
+        type="number"
+        min="100"
+        step="100"
+        value="100"
+        placeholder="Например: 100"
+        oninput="calculatePrice()"
+      >
+
+      <div class="card-text" style="margin-top:8px;">
+        Минимум: 100 ⭐️
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+        2. Для кого покупаете?
+      </div>
+
+      <div
+        id="selfChoice"
+        class="choice selected"
+        onclick="chooseRecipient('self')"
+      >
+        👤 Для себя
+      </div>
+
+      <div
+        id="friendChoice"
+        class="choice"
+        onclick="chooseRecipient('friend')"
+      >
+        👥 Для друга
+      </div>
+
+    </div>
+
+
+    <div
+      id="friendUsernameBlock"
+      class="card"
+      style="display:none;"
+    >
+
+      <div class="card-title">
+        3. Username получателя
+      </div>
+
+      <div class="card-text">
+        Укажите Telegram username друга.
+      </div>
+
+      <input
+        id="friendUsername"
+        class="input"
+        type="text"
+        placeholder="@username"
+        oninput="calculatePrice()"
+      >
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+        Стоимость
+      </div>
+
+      <div class="summary">
+
+        <div class="summary-row">
+          <span>Stars</span>
+          <span id="summaryStars">100 ⭐️</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Цена</span>
+          <span id="summaryUsd">$1.47</span>
+        </div>
+
+        <div class="summary-row">
+          <span>К оплате</span>
+          <span id="summaryTotal">$1.47</span>
+        </div>
+
+      </div>
+
+
+      <div class="warning">
+        ⚠️ Перед оплатой внимательно проверьте количество Stars и username получателя.
+        После подтверждения заказа возврат денежных средств не производится.
+      </div>
+
+
+      <button class="button" onclick="confirmStarsPurchase()">
+        Продолжить
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= PREMIUM ================= -->
+
 <div id="premium" class="page">
 
   <div class="header">
+
+    <button class="back" onclick="openPage('home')">
+      ← Назад
+    </button>
 
     <div class="title">
       💎 Premium
     </div>
 
     <div class="subtitle">
-      Telegram Premium
+      Выберите срок подписки
     </div>
 
   </div>
@@ -302,21 +515,47 @@
         Для кого хотите приобрести?
       </div>
 
-      <div class="option" onclick="premiumChoice('self')">
+      <div class="choice">
         👤 Для себя
       </div>
 
-      <div class="option" onclick="premiumChoice('friend')">
+      <div class="choice">
         👥 Для друга
       </div>
 
     </div>
 
+
+    <div class="card">
+
+      <div class="card-title">
+        Тарифы
+      </div>
+
+      <div class="rate">
+        <span>3 месяца</span>
+        <span class="price">$15.22</span>
+      </div>
+
+      <div class="rate">
+        <span>6 месяцев</span>
+        <span class="price">$23.00</span>
+      </div>
+
+      <div class="rate">
+        <span>12 месяцев</span>
+        <span class="price">$38.40</span>
+      </div>
+
+    </div>
+
   </div>
+
 </div>
 
 
-<!-- ПРОФИЛЬ -->
+<!-- ================= ПРОФИЛЬ ================= -->
+
 <div id="profile" class="page">
 
   <div class="header">
@@ -359,10 +598,12 @@
     </div>
 
   </div>
+
 </div>
 
 
-<!-- ПОДДЕРЖКА -->
+<!-- ================= ПОДДЕРЖКА ================= -->
+
 <div id="support" class="page">
 
   <div class="header">
@@ -396,10 +637,12 @@
     </div>
 
   </div>
+
 </div>
 
 
-<!-- НИЖНЕЕ МЕНЮ -->
+<!-- ================= НИЖНЕЕ МЕНЮ ================= -->
+
 <div class="bottom-nav">
 
   <button class="nav-item active" onclick="openPage('stars', this)">
@@ -433,7 +676,10 @@
   tg.expand();
 
 
-  // Данные пользователя Telegram
+  let recipientType = "self";
+
+
+  // Telegram пользователь
 
   if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
 
@@ -460,35 +706,194 @@
   }
 
 
-  // Переключение страниц
+  // Открытие страницы
 
   function openPage(page, button) {
 
-    document.querySelectorAll(".page").forEach(p => {
-      p.classList.remove("active");
+    document.querySelectorAll(".page").forEach(function(pageElement) {
+      pageElement.classList.remove("active");
     });
 
     document.getElementById(page).classList.add("active");
 
-    document.querySelectorAll(".nav-item").forEach(b => {
-      b.classList.remove("active");
+    document.querySelectorAll(".nav-item").forEach(function(nav) {
+      nav.classList.remove("active");
     });
 
     if (button) {
       button.classList.add("active");
     }
 
+    window.scrollTo(0, 0);
   }
 
 
-  // Покупка Stars
+  // Экран покупки Stars
 
-  function buyStars() {
+  function openBuyStars() {
 
-    tg.showAlert(
-      "⭐️ Покупка Stars\n\n" +
-      "Минимальная покупка — 100 Stars.\n\n" +
-      "Дальше подключим выбор количества и оплату."
+    document.getElementById("starsAmount").value = 100;
+
+    recipientType = "self";
+
+    document.getElementById("selfChoice").classList.add("selected");
+    document.getElementById("friendChoice").classList.remove("selected");
+
+    document.getElementById("friendUsernameBlock").style.display = "none";
+
+    calculatePrice();
+
+    openPage("buyStars");
+
+  }
+
+
+  // Выбор получателя
+
+  function chooseRecipient(type) {
+
+    recipientType = type;
+
+    if (type === "self") {
+
+      document.getElementById("selfChoice").classList.add("selected");
+      document.getElementById("friendChoice").classList.remove("selected");
+
+      document.getElementById("friendUsernameBlock").style.display = "none";
+
+    } else {
+
+      document.getElementById("friendChoice").classList.add("selected");
+      document.getElementById("selfChoice").classList.remove("selected");
+
+      document.getElementById("friendUsernameBlock").style.display = "block";
+
+    }
+
+  }
+
+
+  // Расчёт цены
+
+  function calculatePrice() {
+
+    let amount = Number(
+      document.getElementById("starsAmount").value
+    );
+
+    if (!amount || amount < 100) {
+      amount = 100;
+    }
+
+    // 100 Stars = $1.47
+
+    const price = (amount / 100) * 1.47;
+
+    document.getElementById("summaryStars").innerText =
+      amount + " ⭐️";
+
+    document.getElementById("summaryUsd").innerText =
+      "$" + price.toFixed(2);
+
+    document.getElementById("summaryTotal").innerText =
+      "$" + price.toFixed(2);
+
+  }
+
+
+  // Подтверждение покупки
+
+  function confirmStarsPurchase() {
+
+    let amount = Number(
+      document.getElementById("starsAmount").value
+    );
+
+    if (!amount || amount < 100) {
+
+      tg.showAlert(
+        "⚠️ Минимальная покупка — 100 Stars."
+      );
+
+      return;
+    }
+
+
+    if (amount % 100 !== 0) {
+
+      tg.showAlert(
+        "⚠️ Количество Stars должно быть кратно 100."
+      );
+
+      return;
+    }
+
+
+    let username = "";
+
+    if (recipientType === "friend") {
+
+      username =
+        document.getElementById("friendUsername").value.trim();
+
+      if (!username) {
+
+        tg.showAlert(
+          "⚠️ Укажите username получателя."
+        );
+
+        return;
+      }
+
+      if (!username.startsWith("@")) {
+        username = "@" + username;
+      }
+
+    }
+
+
+    const price = (amount / 100) * 1.47;
+
+    let message =
+      "⭐️ Заказ Stars\n\n" +
+      "Количество: " + amount + " ⭐️\n" +
+      "Сумма: $" + price.toFixed(2) + "\n\n";
+
+
+    if (recipientType === "self") {
+
+      message += "Получатель: себе";
+
+    } else {
+
+      message += "Получатель: " + username;
+
+    }
+
+
+    message +=
+      "\n\nПосле подтверждения переходим к оплате.";
+
+
+    tg.showConfirm(
+      message,
+      function(confirmed) {
+
+        if (confirmed) {
+
+          /*
+            Здесь следующим шагом подключим отправку
+            заказа в твой Python-бот.
+          */
+
+          tg.showAlert(
+            "✅ Заказ сформирован!\n\n" +
+            "Следующим шагом подключим реальную оплату."
+          );
+
+        }
+
+      }
     );
 
   }
@@ -501,23 +906,9 @@
     tg.showAlert(
       "💰 Продажа Stars\n\n" +
       "Минимум — 100 Stars.\n\n" +
-      "После выбора количества можно будет выбрать MBank или Optima 24."
+      "Следующим шагом подключим выбор количества, " +
+      "MBank / Optima 24 и отправку QR."
     );
-
-  }
-
-
-  // Premium
-
-  function premiumChoice(type) {
-
-    let text =
-      "💎 Выберите срок Premium:\n\n" +
-      "3 месяца — 15.22$\n" +
-      "6 месяцев — 23$\n" +
-      "12 месяцев — 38.40$";
-
-    tg.showAlert(text);
 
   }
 
@@ -546,4 +937,4 @@
 </script>
 
 </body>
-    </html>
+</html>

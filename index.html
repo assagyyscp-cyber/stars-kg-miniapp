@@ -1,64 +1,30 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-      initial-scale=1.0,
-      maximum-scale=1.0,
-      user-scalable=no,
-      viewport-fit=cover">
-
-<title>Stars KG</title>
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-<style>
-
-:root {
-    --red: #ff2635;
-    --red2: #ff5260;
-    --bg: #050506;
-    --glass: rgba(255,255,255,.075);
-    --glass2: rgba(255,255,255,.045);
-    --border: rgba(255,255,255,.13);
-    --text: #ffffff;
-    --secondary: rgba(255,255,255,.55);
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Stars KG</title><script src="https://telegram.org/js/telegram-web-app.js"></script><style>
+:root{
+    --red:#ff304f;
+    --red2:#ff1744;
+    --bg:#050506;
+    --glass:rgba(255,255,255,.075);
+    --glass2:rgba(255,255,255,.045);
+    --border:rgba(255,255,255,.12);
+    --text:#fff;
+    --muted:rgba(255,255,255,.58);
 }
 
-/* =========================
-   BASE
-========================= */
-
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html {
-    background: var(--bg);
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(255,35,50,.23),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 100% 40%,
-            rgba(255,0,30,.08),
-            transparent 35%
-        ),
-        #050506;
-
-    color: var(--text);
-
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:#050506;
+    color:white;
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -67,417 +33,218 @@ body {
         "Helvetica Neue",
         Arial,
         sans-serif;
-
-    overflow-x: hidden;
-    padding-bottom: calc(95px + env(safe-area-inset-bottom));
 }
 
-/* =========================
-   BACKGROUND LIGHT
-========================= */
-
-body::before {
-    content: "";
-    position: fixed;
-
-    width: 240px;
-    height: 240px;
-
-    top: 90px;
-    left: -100px;
-
-    background: rgba(255,25,45,.12);
-
-    filter: blur(70px);
-
-    border-radius: 50%;
-
-    pointer-events: none;
+body{
+    overflow-x:hidden;
+    padding-bottom:100px;
 }
 
-body::after {
-    content: "";
-
-    position: fixed;
-
-    width: 180px;
-    height: 180px;
-
-    right: -80px;
-    bottom: 160px;
-
-    background: rgba(255,0,30,.10);
-
-    filter: blur(70px);
-
-    border-radius: 50%;
-
-    pointer-events: none;
+body:before{
+    content:"";
+    position:fixed;
+    width:330px;
+    height:330px;
+    top:-130px;
+    right:-100px;
+    background:rgba(255,30,70,.18);
+    filter:blur(80px);
+    border-radius:50%;
+    pointer-events:none;
 }
 
-/* =========================
-   APP
-========================= */
-
-.app {
-    width: 100%;
-    max-width: 620px;
-
-    margin: auto;
-
-    padding:
-        calc(18px + env(safe-area-inset-top))
-        16px
-        30px;
+body:after{
+    content:"";
+    position:fixed;
+    width:280px;
+    height:280px;
+    left:-140px;
+    bottom:50px;
+    background:rgba(255,20,55,.10);
+    filter:blur(90px);
+    border-radius:50%;
+    pointer-events:none;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-.header {
-    text-align: center;
-
-    padding: 12px 0 27px;
+.app{
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding:18px 16px 30px;
 }
 
-.logo {
-    position: relative;
+/* TOP */
 
-    width: 76px;
-    height: 76px;
+.top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
 
-    margin: auto;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
 
-    border-radius: 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo{
+    width:43px;
+    height:43px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.17),
-            rgba(255,255,255,.045)
-        );
+        linear-gradient(145deg,
+        rgba(255,255,255,.16),
+        rgba(255,255,255,.035));
 
-    border: 1px solid rgba(255,255,255,.17);
+    border:1px solid rgba(255,255,255,.15);
 
     box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.20),
-        0 15px 40px rgba(0,0,0,.35),
-        0 0 35px rgba(255,25,40,.20);
+        inset 0 1px 1px rgba(255,255,255,.18),
+        0 8px 30px rgba(0,0,0,.35),
+        0 0 25px rgba(255,30,70,.16);
 
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-
-    overflow: hidden;
+    backdrop-filter:blur(25px) saturate(160%);
 }
 
-.logo::before {
-    content: "";
-
-    position: absolute;
-
-    top: -50%;
-    left: -30%;
-
-    width: 160%;
-    height: 80%;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent,
-            rgba(255,255,255,.25),
-            transparent
-        );
-
-    transform: rotate(-15deg);
+.brand-title{
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:-.4px;
 }
 
-.logo svg {
-    width: 39px;
-    height: 39px;
-
-    color: #fff;
-
-    filter:
-        drop-shadow(0 3px 10px rgba(255,255,255,.25));
+.brand-sub{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:2px;
 }
 
-.title {
-    margin-top: 15px;
+/* SCREENS */
 
-    font-size: 27px;
-    line-height: 1.1;
-
-    font-weight: 800;
-
-    letter-spacing: -.8px;
+.screen{
+    display:none;
+    animation:screenIn .32s ease;
 }
 
-.subtitle {
-    margin-top: 7px;
-
-    color: var(--secondary);
-
-    font-size: 14px;
-
-    letter-spacing: -.1px;
+.screen.active{
+    display:block;
 }
 
-/* =========================
-   GLASS
-========================= */
+@keyframes screenIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-.glass {
-    position: relative;
+/* HERO */
+
+.hero{
+    padding:25px 21px;
+    border-radius:28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.095),
+            rgba(255,255,255,.105),
             rgba(255,255,255,.035)
         );
 
-    border: 1px solid var(--border);
+    border:1px solid rgba(255,255,255,.13);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.13),
-        inset 0 -1px 0 rgba(255,255,255,.025),
-        0 18px 50px rgba(0,0,0,.28);
+        inset 0 1px 1px rgba(255,255,255,.14),
+        inset 0 -1px 1px rgba(0,0,0,.2),
+        0 18px 60px rgba(0,0,0,.45),
+        0 0 45px rgba(255,20,55,.09);
 
-    backdrop-filter: blur(30px) saturate(145%);
-    -webkit-backdrop-filter: blur(30px) saturate(145%);
+    backdrop-filter:blur(30px) saturate(170%);
+    -webkit-backdrop-filter:blur(30px) saturate(170%);
 
-    overflow: hidden;
+    margin-bottom:16px;
 }
 
-.glass::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    top: 0;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.35),
-            transparent
-        );
-
-    opacity: .65;
+.hero-title{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:-1.2px;
+    margin-bottom:7px;
 }
 
-/* =========================
-   MAIN MENU
-========================= */
-
-.main-buttons {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 11px;
-
-    margin-bottom: 15px;
+.hero-text{
+    color:var(--muted);
+    line-height:1.45;
+    font-size:14px;
 }
 
-.main-btn {
-    position: relative;
+/* GLASS CARD */
 
-    min-height: 112px;
-
-    padding: 17px;
-
-    text-align: left;
-
-    border-radius: 23px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.095),
-            rgba(255,255,255,.035)
-        );
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    color: white;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 15px 40px rgba(0,0,0,.22);
-
-    backdrop-filter: blur(27px);
-    -webkit-backdrop-filter: blur(27px);
-
-    overflow: hidden;
-
-    transition:
-        transform .18s ease,
-        border-color .18s ease;
-}
-
-.main-btn::after {
-    content: "";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    right: -30px;
-    bottom: -35px;
-
-    background: rgba(255,35,50,.13);
-
-    filter: blur(25px);
-
-    border-radius: 50%;
-}
-
-.main-btn:active {
-    transform: scale(.965);
-
-    border-color:
-        rgba(255,55,70,.55);
-}
-
-.main-icon {
-    width: 30px;
-    height: 30px;
-
-    margin-bottom: 14px;
-
-    color: white;
-
-    opacity: .95;
-}
-
-.main-btn-title {
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    letter-spacing: -.2px;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-.section-title {
-    font-size: 21px;
-
-    font-weight: 800;
-
-    letter-spacing: -.4px;
-
-    margin:
-        8px 0
-        13px;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.card {
-    border-radius: 22px;
-
-    padding: 17px;
-
-    margin-bottom: 12px;
-
-    position: relative;
+.card{
+    position:relative;
+    overflow:hidden;
 
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.085),
-            rgba(255,255,255,.032)
+            rgba(255,255,255,.035)
         );
 
-    border: 1px solid rgba(255,255,255,.115);
+    border:1px solid var(--border);
+    border-radius:24px;
+
+    padding:18px;
+
+    margin-bottom:12px;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.11),
-        0 15px 45px rgba(0,0,0,.23);
+        inset 0 1px 1px rgba(255,255,255,.10),
+        0 15px 45px rgba(0,0,0,.32);
 
-    backdrop-filter: blur(30px) saturate(140%);
-    -webkit-backdrop-filter: blur(30px) saturate(140%);
-
-    overflow: hidden;
+    backdrop-filter:blur(28px) saturate(160%);
+    -webkit-backdrop-filter:blur(28px) saturate(160%);
 }
 
-.card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-    height: 130px;
-
-    right: -80px;
-    top: -80px;
-
-    border-radius: 50%;
-
-    background: rgba(255,30,45,.08);
-
-    filter: blur(20px);
-
-    pointer-events: none;
+.card:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:15%;
+    right:15%;
+    height:1px;
+    background:rgba(255,255,255,.18);
+    filter:blur(.4px);
 }
 
-/* =========================
-   PRODUCT
-========================= */
-
-.product {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 12px;
+.card-title{
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:-.4px;
 }
 
-.product-left {
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    min-width: 0;
+.card-sub{
+    margin-top:5px;
+    color:var(--muted);
+    font-size:13px;
 }
 
-.product-icon {
-    width: 51px;
-    height: 51px;
+/* ICON */
 
-    flex: 0 0 51px;
-
-    border-radius: 17px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.icon{
+    width:44px;
+    height:44px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:
         linear-gradient(
@@ -486,1657 +253,1197 @@ body::after {
             rgba(255,255,255,.045)
         );
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.11);
+
+    margin-bottom:13px;
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.13);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+        inset 0 1px 1px rgba(255,255,255,.13);
 }
 
-.product-icon svg {
-    width: 25px;
-    height: 25px;
+.icon svg{
+    width:23px;
+    height:23px;
 }
 
-.product-name {
-    font-size: 16px;
+/* BUTTON */
 
-    font-weight: 700;
+.btn{
+    width:100%;
+    min-height:53px;
+    border:0;
+    border-radius:18px;
 
-    letter-spacing: -.2px;
-}
+    color:white;
+    font-size:15px;
+    font-weight:650;
 
-.product-price {
-    margin-top: 5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
 
-    color: white;
-
-    font-size: 14px;
-
-    line-height: 1.45;
-
-    font-weight: 700;
-}
-
-.price-usd {
-    color: #fff;
-}
-
-.price-kgs {
-    color: rgba(255,255,255,.52);
-
-    font-weight: 500;
-}
-
-.buy-button {
-    position: relative;
-
-    flex-shrink: 0;
-
-    border: 0;
-
-    color: white;
-
-    padding: 11px 16px;
-
-    border-radius: 14px;
+    cursor:pointer;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,65,80,.95),
-            rgba(205,18,31,.92)
-        );
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.25),
-        0 8px 20px rgba(255,20,35,.18);
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    transition:
-        transform .15s ease,
-        filter .15s ease;
-}
-
-.buy-button:active {
-    transform: scale(.94);
-    filter: brightness(.88);
-}
-
-/* =========================
-   EXCHANGE
-========================= */
-
-.exchange {
-    border-radius: 23px;
-
-    padding: 18px;
-
-    margin-bottom: 12px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,35,50,.13),
-            rgba(255,255,255,.035)
-        );
-
-    border: 1px solid rgba(255,65,75,.20);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 18px 50px rgba(0,0,0,.25);
-
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-}
-
-.exchange-title {
-    font-size: 17px;
-
-    font-weight: 800;
-
-    margin-bottom: 12px;
-}
-
-.exchange-row {
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 15px;
-
-    padding: 10px 0;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
-
-    font-size: 14px;
-}
-
-.exchange-row:last-child {
-    border-bottom: 0;
-}
-
-.exchange-row b {
-    text-align: right;
-
-    white-space: nowrap;
-}
-
-/* =========================
-   WARNING
-========================= */
-
-.warning {
-    padding: 15px;
-
-    margin-top: 14px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    color:
-        rgba(255,255,255,.58);
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.warning strong {
-    color: #ff5965;
-}
-
-/* =========================
-   BACK BUTTON
-========================= */
-
-.back {
-    border: 1px solid rgba(255,255,255,.10);
-
-    color: rgba(255,255,255,.8);
-
-    background:
-        rgba(255,255,255,.06);
-
-    padding: 11px 15px;
-
-    border-radius: 15px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    margin-bottom: 13px;
-
-    transition: transform .15s ease;
-}
-
-.back:active {
-    transform: scale(.95);
-}
-
-/* =========================
-   BIG BUTTON
-========================= */
-
-.big-button {
-    width: 100%;
-
-    padding: 15px;
-
-    border-radius: 16px;
-
-    border: 1px solid rgba(255,255,255,.13);
-
-    color: white;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.10),
+            rgba(255,255,255,.105),
             rgba(255,255,255,.045)
         );
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.13);
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.big-button:active {
-    transform: scale(.98);
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile {
-    text-align: center;
-
-    padding: 27px 18px;
-}
-
-.avatar {
-    width: 76px;
-    height: 76px;
-
-    margin: 0 auto 13px;
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,55,70,.75),
-            rgba(155,10,20,.75)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.22),
-        0 12px 35px rgba(255,20,35,.18);
-}
+        inset 0 1px 1px rgba(255,255,255,.12),
+        0 8px 25px rgba(0,0,0,.22);
 
-.avatar svg {
-    width: 35px;
-    height: 35px;
-}
-
-.username {
-    font-size: 18px;
-
-    font-weight: 750;
-}
-
-.id {
-    color: rgba(255,255,255,.45);
-
-    font-size: 13px;
-
-    margin-top: 5px;
-}
-
-/* =========================
-   BOTTOM NAV
-========================= */
-
-.bottom-nav {
-    position: fixed;
-
-    left: 10px;
-    right: 10px;
-
-    bottom:
-        calc(10px + env(safe-area-inset-bottom));
-
-    max-width: 600px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(5, 1fr);
-
-    gap: 4px;
-
-    padding: 7px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(35,35,38,.78),
-            rgba(15,15,17,.72)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.14);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.13),
-        0 20px 55px rgba(0,0,0,.55);
-
-    backdrop-filter:
-        blur(35px)
-        saturate(160%);
-
-    -webkit-backdrop-filter:
-        blur(35px)
-        saturate(160%);
-
-    z-index: 1000;
-}
-
-.nav-btn {
-    position: relative;
-
-    border: 0;
-
-    background: transparent;
-
-    color:
-        rgba(255,255,255,.45);
-
-    padding: 8px 3px;
-
-    border-radius: 18px;
-
-    font-size: 10px;
-
-    font-weight: 600;
+    backdrop-filter:blur(20px);
 
     transition:
-        color .2s ease,
-        background .2s ease,
-        transform .15s ease;
+        transform .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
 }
 
-.nav-btn svg {
-    width: 21px;
-    height: 21px;
-
-    display: block;
-
-    margin:
-        0 auto
-        4px;
+.btn:active{
+    transform:scale(.97);
 }
 
-.nav-btn.active {
-    color: white;
-
+.btn-red{
     background:
-        rgba(255,255,255,.09);
+        linear-gradient(
+            145deg,
+            #ff3654,
+            #d91436
+        );
+
+    border-color:rgba(255,255,255,.18);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10);
+        inset 0 1px 1px rgba(255,255,255,.25),
+        0 10px 30px rgba(255,30,65,.23);
 }
 
-.nav-btn.active svg {
-    color: var(--red2);
+.btn + .btn{
+    margin-top:9px;
+}
 
-    filter:
-        drop-shadow(
-            0 0 7px
-            rgba(255,30,45,.35)
+/* PRODUCTS */
+
+.product{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.product-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.product-icon{
+    width:48px;
+    height:48px;
+    border-radius:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.035)
         );
+
+    border:1px solid rgba(255,255,255,.12);
 }
 
-.nav-btn:active {
-    transform: scale(.91);
+.product-name{
+    font-size:16px;
+    font-weight:700;
 }
 
-/* =========================
-   HIDDEN
-========================= */
-
-.hidden {
-    display: none !important;
+.product-price{
+    margin-top:3px;
+    font-size:13px;
+    color:var(--muted);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 370px) {
-
-    .app {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    .main-btn {
-        min-height: 105px;
-    }
-
-    .product {
-        gap: 8px;
-    }
-
-    .product-name {
-        font-size: 15px;
-    }
-
-    .buy-button {
-        padding:
-            10px 12px;
-    }
-
+.product-btn{
+    width:auto;
+    min-width:88px;
+    padding:0 16px;
 }
 
-</style>
-</head>
+/* CUSTOM STARS */
 
+.custom-box{
+    margin-top:13px;
+    display:none;
+}
 
-<body>
+.custom-box.show{
+    display:block;
+}
 
-<div class="app">
+.input{
+    width:100%;
+    height:54px;
 
-    <!-- HEADER -->
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.13);
 
-    <div class="header">
+    outline:none;
 
+    background:rgba(255,255,255,.055);
+    color:white;
+
+    padding:0 16px;
+
+    font-size:17px;
+    font-weight:600;
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+}
+
+.input::placeholder{
+    color:rgba(255,255,255,.38);
+}
+
+.custom-price{
+    margin:10px 2px 12px;
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* RATE */
+
+.rate{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.rate:last-child{
+    border-bottom:0;
+}
+
+.rate-title{
+    font-size:14px;
+    color:var(--muted);
+}
+
+.rate-value{
+    font-size:15px;
+    font-weight:700;
+}
+
+/* PROFILE */
+
+.profile-head{
+    text-align:center;
+    padding:25px 15px;
+}
+
+.avatar{
+    width:76px;
+    height:76px;
+    margin:auto auto 13px;
+
+    border-radius:26px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,48,79,.9),
+            rgba(120,5,25,.85)
+        );
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.2),
+        0 12px 35px rgba(255,20,50,.2);
+}
+
+.profile-name{
+    font-size:20px;
+    font-weight:750;
+}
+
+.profile-username{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:3px;
+}
+
+/* BOTTOM NAV */
+
+.nav-wrap{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:10px;
+
+    display:flex;
+    justify-content:center;
+
+    z-index:100;
+    pointer-events:none;
+}
+
+.nav{
+    pointer-events:auto;
+
+    width:calc(100% - 24px);
+    max-width:500px;
+
+    height:69px;
+
+    padding:7px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,30,32,.86),
+            rgba(15,15,17,.76)
+        );
+
+    border:1px solid rgba(255,255,255,.13);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.11),
+        0 18px 55px rgba(0,0,0,.65);
+
+    backdrop-filter:blur(32px) saturate(180%);
+    -webkit-backdrop-filter:blur(32px) saturate(180%);
+}
+
+.nav-item{
+    flex:1;
+    height:55px;
+
+    border-radius:19px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:4px;
+
+    color:rgba(255,255,255,.48);
+
+    font-size:10px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.nav-item svg{
+    width:20px;
+    height:20px;
+}
+
+.nav-item.active{
+    color:white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.055)
+        );
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.13);
+}
+
+.nav-item.active svg{
+    filter:drop-shadow(0 0 7px rgba(255,40,70,.65));
+}
+
+/* NOTICE */
+
+.notice{
+    color:rgba(255,255,255,.5);
+    font-size:11px;
+    line-height:1.45;
+    text-align:center;
+    margin:16px 5px;
+}
+
+/* BACK */
+
+.back{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:rgba(255,255,255,.62);
+
+    font-size:14px;
+    margin-bottom:15px;
+
+    cursor:pointer;
+}
+
+.back svg{
+    width:18px;
+}
+
+/* DESKTOP */
+
+@media(min-width:700px){
+    .app{
+        padding-top:30px;
+    }
+
+    .nav-wrap{
+        bottom:18px;
+    }
+}
+</style></head><body><div class="app"><!-- HEADER -->
+<div class="top">
+    <div class="brand">
         <div class="logo">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2.8l2.65 5.37 5.92.86-4.28 4.17 1.01 5.89L12 16.31l-5.3 2.78 1.01-5.89-4.28-4.17 5.92-.86L12 2.8Z"
+                fill="#fff"/>
+            </svg>
+        </div>
 
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="1.7"
-                 stroke-linecap="round"
-                 stroke-linejoin="round">
+        <div>
+            <div class="brand-title">Stars KG</div>
+            <div class="brand-sub">Telegram Shop</div>
+        </div>
+    </div>
+</div>
 
-                <path d="M12 2.8l2.65 5.38 5.94.86-4.3 4.19 1.02 5.91L12 16.35l-5.31 2.79 1.02-5.91-4.3-4.19 5.94-.86L12 2.8z"/>
+
+<!-- HOME -->
+<section id="home" class="screen active">
+
+    <div class="hero">
+        <div class="hero-title">Stars, Premium<br>и многое другое.</div>
+        <div class="hero-text">
+            Покупайте Telegram Stars и Premium
+            быстро и удобно.
+        </div>
+    </div>
+
+    <div class="card" onclick="openScreen('stars')">
+        <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2.8l2.65 5.37 5.92.86-4.28 4.17 1.01 5.89L12 16.31l-5.3 2.78 1.01-5.89-4.28-4.17 5.92-.86L12 2.8Z"
+                fill="#fff"/>
+            </svg>
+        </div>
+
+        <div class="card-title">Telegram Stars</div>
+        <div class="card-sub">Покупка и продажа Stars</div>
+
+        <button class="btn btn-red" style="margin-top:15px;">
+            Открыть
+        </button>
+    </div>
+
+    <div class="card" onclick="openScreen('premium')">
+        <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 5.5h14l-1.5 13h-11L5 5.5Z"
+                stroke="white" stroke-width="1.7"/>
+                <path d="M8 5.5V4a4 4 0 0 1 8 0v1.5"
+                stroke="white" stroke-width="1.7"/>
+            </svg>
+        </div>
+
+        <div class="card-title">Telegram Premium</div>
+        <div class="card-sub">3, 6 или 12 месяцев</div>
+
+        <button class="btn" style="margin-top:15px;">
+            Выбрать
+        </button>
+    </div>
+
+</section>
+
+
+<!-- STARS -->
+<section id="stars" class="screen">
+
+    <div class="back" onclick="openScreen('home')">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M15 5l-7 7 7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+        </svg>
+        Назад
+    </div>
+
+    <div class="hero">
+        <div class="hero-title">Stars</div>
+        <div class="hero-text">
+            Выберите количество Stars.
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="product">
+            <div class="product-left">
+                <div class="product-icon">
+                    <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2.8l2.65 5.37 5.92.86-4.28 4.17 1.01 5.89L12 16.31l-5.3 2.78 1.01-5.89-4.28-4.17 5.92-.86L12 2.8Z"
+                        fill="white"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="product-name">100 Stars</div>
+                    <div class="product-price">$1.47 · 128 сом</div>
+                </div>
+            </div>
+
+            <button class="btn btn-red product-btn"
+                onclick="buyStars(100)">
+                Купить
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="product">
+            <div class="product-left">
+                <div class="product-icon">
+                    <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2.8l2.65 5.37 5.92.86-4.28 4.17 1.01 5.89L12 16.31l-5.3 2.78 1.01-5.89-4.28-4.17 5.92-.86L12 2.8Z"
+                        fill="white"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="product-name">500 Stars</div>
+                    <div class="product-price">$7.35 · 640 сом</div>
+                </div>
+            </div>
+
+            <button class="btn btn-red product-btn"
+                onclick="buyStars(500)">
+                Купить
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="product">
+            <div class="product-left">
+                <div class="product-icon">
+                    <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2.8l2.65 5.37 5.92.86-4.28 4.17 1.01 5.89L12 16.31l-5.3 2.78 5.92-.86L12 2.8Z"
+                        fill="white"/>
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="product-name">1000 Stars</div>
+                    <div class="product-price">$14.70 · 1 279 сом</div>
+                </div>
+            </div>
+
+            <button class="btn btn-red product-btn"
+                onclick="buyStars(1000)">
+                Купить
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- CUSTOM -->
+    <div class="card">
+
+        <div class="card-title">Своё количество</div>
+
+        <div class="card-sub">
+            Минимум 100 Stars
+        </div>
+
+        <button class="btn"
+            style="margin-top:14px;"
+            onclick="toggleCustom()">
+            Ввести количество
+        </button>
+
+        <div id="customBox" class="custom-box">
+
+            <input
+                id="customStars"
+                class="input"
+                type="number"
+                min="100"
+                step="1"
+                placeholder="Например, 750"
+                oninput="updateCustomPrice()"
+            >
+
+            <div id="customPrice" class="custom-price">
+                Введите количество Stars
+            </div>
+
+            <button class="btn btn-red"
+                onclick="buyCustomStars()">
+                Купить Stars
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SELL -->
+
+    <div class="card">
+
+        <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16M4 12h16M4 17h10"
+                stroke="white"
+                stroke-width="1.7"
+                stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <div class="card-title">Продать Stars</div>
+
+        <div class="card-sub">
+            Получите деньги на MBank или Optima 24.
+        </div>
+
+        <button class="btn"
+            style="margin-top:14px;"
+            onclick="openScreen('sell')">
+            Продать Stars
+        </button>
+
+    </div>
+
+    <div class="notice">
+        Минимальная покупка — 100 Stars.<br>
+        Перед оплатой внимательно проверяйте данные.
+    </div>
+
+</section>
+
+
+<!-- SELL -->
+<section id="sell" class="screen">
+
+    <div class="back" onclick="openScreen('stars')">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M15 5l-7 7 7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"/>
+        </svg>
+        Назад
+    </div>
+
+    <div class="hero">
+        <div class="hero-title">Продать Stars</div>
+        <div class="hero-text">
+            Минимум 100 Stars.
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-title">Курс продажи</div>
+
+        <div class="rate">
+            <div class="rate-title">100 Stars</div>
+            <div class="rate-value">$1.07 · 93 сом</div>
+        </div>
+
+        <div class="rate">
+            <div class="rate-title">Минимум</div>
+            <div class="rate-value">100 Stars</div>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-title">Количество Stars</div>
+
+        <input
+            id="sellStars"
+            class="input"
+            type="number"
+            min="100"
+            placeholder="Например, 500"
+            style="margin-top:13px;"
+            oninput="updateSellPrice()"
+        >
+
+        <div id="sellPrice"
+            class="custom-price">
+            Введите количество Stars
+        </div>
+
+        <button class="btn btn-red"
+            onclick="sellStars()">
+            Продолжить
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-title">Важно</div>
+
+        <div class="card-sub" style="line-height:1.6;">
+            Перед выплатой отправьте скриншот,
+            подтверждающий источник покупки Stars.
+            После выбора банка отправляйте только QR-код.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PREMIUM -->
+<section id="premium" class="screen">
+
+    <div class="back" onclick="openScreen('home')">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M15 5l-7 7 7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"/>
+        </svg>
+        Назад
+    </div>
+
+    <div class="hero">
+        <div class="hero-title">Premium</div>
+        <div class="hero-text">
+            Выберите срок подписки.
+        </div>
+    </div>
+
+
+    <div class="card">
+
+        <div class="product">
+
+            <div>
+                <div class="product-name">3 месяца</div>
+                <div class="product-price">$15.22 · 1 324 сом</div>
+            </div>
+
+            <button class="btn btn-red product-btn"
+                onclick="buyPremium(3)">
+                Купить
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="product">
+
+            <div>
+                <div class="product-name">6 месяцев</div>
+                <div class="product-price">$23.00 · 2 001 сом</div>
+            </div>
+
+            <button class="btn btn-red product-btn"
+                onclick="buyPremium(6)">
+                Купить
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="product">
+
+            <div>
+                <div class="product-name">12 месяцев</div>
+                <div class="product-price">$38.40 · 3 341 сом</div>
+            </div>
+
+            <button class="btn btn-red product-btn"
+                onclick="buyPremium(12)">
+                Купить
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile" class="screen">
+
+    <div class="hero profile-head">
+
+        <div class="avatar">
+
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none">
+
+                <circle cx="12" cy="8" r="3.5"
+                    stroke="white"
+                    stroke-width="1.7"/>
+
+                <path d="M5.5 20c.8-3.6 3-5.5 6.5-5.5s5.7 1.9 6.5 5.5"
+                    stroke="white"
+                    stroke-width="1.7"
+                    stroke-linecap="round"/>
 
             </svg>
 
         </div>
 
-        <div class="title">
-            Stars KG
+        <div id="profileName" class="profile-name">
+            Telegram
         </div>
 
-        <div class="subtitle">
-            Stars, Premium и подарки — всё в одном месте
-        </div>
-
-    </div>
-
-
-    <!-- HOME -->
-
-    <div id="home">
-
-        <div class="main-buttons">
-
-            <button class="main-btn"
-                    onclick="showSection('stars')">
-
-                <svg class="main-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.7"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-
-                    <path d="M12 2.8l2.65 5.38 5.94.86-4.3 4.19 1.02 5.91L12 16.35l-5.31 2.79 1.02-5.91-4.3-4.19 5.94-.86L12 2.8z"/>
-
-                </svg>
-
-                <div class="main-btn-title">
-                    Звёзды
-                </div>
-
-            </button>
-
-
-            <button class="main-btn"
-                    onclick="showSection('premium')">
-
-                <svg class="main-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.7"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-
-                    <path d="M4 8h16l-2 11H6L4 8z"/>
-                    <path d="M8 8l4-5 4 5"/>
-                    <path d="M9 12h6"/>
-                    <path d="M10 15h4"/>
-
-                </svg>
-
-                <div class="main-btn-title">
-                    Премиум
-                </div>
-
-            </button>
-
-
-            <button class="main-btn"
-                    onclick="showSection('gifts')">
-
-                <svg class="main-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.7"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-
-                    <path d="M20 12v9H4v-9"/>
-                    <path d="M2.5 7.5h19v4h-19z"/>
-                    <path d="M12 7.5V21"/>
-                    <path d="M12 7.5H7.8a2.3 2.3 0 1 1 0-4.6C10.4 2.9 12 7.5 12 7.5z"/>
-                    <path d="M12 7.5h4.2a2.3 2.3 0 1 0 0-4.6C13.6 2.9 12 7.5 12 7.5z"/>
-
-                </svg>
-
-                <div class="main-btn-title">
-                    Подарки
-                </div>
-
-            </button>
-
-
-            <button class="main-btn"
-                    onclick="showSection('profile')">
-
-                <svg class="main-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.7"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-
-                    <circle cx="12" cy="8" r="3.5"/>
-                    <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"/>
-
-                </svg>
-
-                <div class="main-btn-title">
-                    Профиль
-                </div>
-
-            </button>
-
-        </div>
-
-
-        <!-- EXCHANGE -->
-
-        <div class="exchange">
-
-            <div class="exchange-title">
-                Обмен звёзд
-            </div>
-
-            <div class="exchange-row">
-                <span>Купить 100 ⭐</span>
-
-                <b>
-                    $1.47 / 128 сом
-                </b>
-            </div>
-
-            <div class="exchange-row">
-                <span>Продать 100 ⭐</span>
-
-                <b>
-                    $1.07 / 93 сом
-                </b>
-            </div>
-
-        </div>
-
-
-        <!-- SUPPORT -->
-
-        <div class="card">
-
-            <div class="section-title">
-                Поддержка
-            </div>
-
-            <button class="big-button"
-                    onclick="support()">
-
-                Написать в поддержку
-
-            </button>
-
+        <div id="profileUsername" class="profile-username">
+            Откройте Mini App через Telegram
         </div>
 
     </div>
 
 
-    <!-- STARS -->
+    <div class="card">
 
-    <div id="stars"
-         class="hidden">
+        <div class="card-title">Мои заказы</div>
 
-        <button class="back"
-                onclick="showSection('home')">
+        <div class="card-sub">
+            Просмотр истории заказов.
+        </div>
 
-            ← Назад
-
+        <button class="btn"
+            style="margin-top:14px;"
+            onclick="sendAction('orders')">
+            Открыть заказы
         </button>
 
-
-        <div class="section-title">
-            Звёзды
-        </div>
-
-
-        <!-- 100 -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.7"
-                         stroke-linecap="round"
-                         stroke-linejoin="round">
-
-                        <path d="M12 2.8l2.65 5.38 5.94.86-4.3 4.19 1.02 5.91L12 16.35l-5.31 2.79 1.02-5.91-4.3-4.19 5.94-.86L12 2.8z"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        100 Stars
-                    </div>
-
-                    <div class="product-price">
-                        <span class="price-usd">
-                            $1.47
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            128 сом
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyStars(100,1.47,128)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <!-- 500 -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.7">
-
-                        <path d="M12 2.8l2.65 5.38 5.94.86-4.3 4.19 1.02 5.91L12 16.35l-5.31 2.79 1.02-5.91-4.3-4.19 5.94-.86L12 2.8z"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        500 Stars
-                    </div>
-
-                    <div class="product-price">
-                        <span class="price-usd">
-                            $7.35
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            640 сом
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyStars(500,7.35,640)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <!-- 1000 -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.7">
-
-                        <path d="M12 2.8l2.65 5.38 5.94.86-4.3 4.19 1.02 5.91L12 16.35l-5.31 2.79 1.02-5.91-4.3-4.19 5.94-.86L12 2.8z"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        1000 Stars
-                    </div>
-
-                    <div class="product-price">
-                        <span class="price-usd">
-                            $14.70
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            1 279 сом
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyStars(1000,14.70,1279)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <!-- SELL -->
-
-        <div class="exchange">
-
-            <div class="exchange-title">
-                Продать Stars
-            </div>
-
-            <div class="exchange-row">
-                <span>Минимум</span>
-                <b>100 ⭐</b>
-            </div>
-
-            <div class="exchange-row">
-                <span>100 ⭐</span>
-                <b>$1.07 / 93 сом</b>
-            </div>
-
-            <button class="big-button"
-                    onclick="sellStars()">
-
-                Продать Stars
-
-            </button>
-
-        </div>
-
-
-        <div class="warning">
-
-            <strong>Важно</strong><br>
-
-            Оплата производится полностью.
-            После оплаты возврат средств не производится.
-            Перед покупкой внимательно проверьте количество Stars.
-
-        </div>
-
     </div>
 
 
-    <!-- PREMIUM -->
+    <div class="card">
 
-    <div id="premium"
-         class="hidden">
+        <div class="card-title">Поддержка</div>
 
-        <button class="back"
-                onclick="showSection('home')">
+        <div class="card-sub">
+            Если возникли вопросы — напишите нам.
+        </div>
 
-            ← Назад
-
+        <button class="btn btn-red"
+            style="margin-top:14px;"
+            onclick="openSupport()">
+            Написать в поддержку
         </button>
 
-
-        <div class="section-title">
-            Telegram Premium
-        </div>
-
-
-        <!-- 3 MONTH -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.7"
-                         stroke-linecap="round"
-                         stroke-linejoin="round">
-
-                        <path d="M4 8h16l-2 11H6L4 8z"/>
-                        <path d="M8 8l4-5 4 5"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        3 месяца
-                    </div>
-
-                    <div class="product-price">
-
-                        <span class="price-usd">
-                            $15.22
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            1 324 сом
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyPremium('3 месяца',15.22,1324)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <!-- 6 MONTH -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.7">
-
-                        <path d="M4 8h16l-2 11H6L4 8z"/>
-                        <path d="M8 8l4-5 4 5"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        6 месяцев
-                    </div>
-
-                    <div class="product-price">
-
-                        <span class="price-usd">
-                            $23.00
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            2 001 сом
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyPremium('6 месяцев',23,2001)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <!-- 12 MONTH -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.7">
-
-                        <path d="M4 8h16l-2 11H6L4 8z"/>
-                        <path d="M8 8l4-5 4 5"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        12 месяцев
-                    </div>
-
-                    <div class="product-price">
-
-                        <span class="price-usd">
-                            $38.40
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            3 341 сом
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyPremium('12 месяцев',38.40,3341)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <div class="warning">
-
-            <strong>Важно</strong><br>
-
-            Оплата производится полностью.
-            После оплаты возврат средств не производится.
-
-        </div>
-
     </div>
 
-
-    <!-- GIFTS -->
-
-    <div id="gifts"
-         class="hidden">
-
-        <button class="back"
-                onclick="showSection('home')">
-
-            ← Назад
-
-        </button>
-
-
-        <div class="section-title">
-            Подарки
-        </div>
-
-
-        <!-- BEAR -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.6"
-                         stroke-linecap="round">
-
-                        <circle cx="8" cy="7" r="2.3"/>
-                        <circle cx="16" cy="7" r="2.3"/>
-                        <circle cx="12" cy="13" r="6"/>
-                        <circle cx="10" cy="12" r=".5"/>
-                        <circle cx="14" cy="12" r=".5"/>
-                        <path d="M10 15c1 .8 3 .8 4 0"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        Удалённый Мишка
-                    </div>
-
-                    <div class="product-price">
-
-                        <span class="price-usd">
-                            50 ⭐
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            89 сом
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyGift('Мишка',50,89)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <!-- DIAMOND -->
-
-        <div class="card product">
-
-            <div class="product-left">
-
-                <div class="product-icon">
-
-                    <svg viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.6"
-                         stroke-linejoin="round">
-
-                        <path d="M5 8l3-4h8l3 4-7 11L5 8z"/>
-                        <path d="M5 8h14"/>
-                        <path d="M8 4l4 4 4-4"/>
-                        <path d="M8 8l4 11 4-11"/>
-
-                    </svg>
-
-                </div>
-
-                <div>
-
-                    <div class="product-name">
-                        Алмаз
-                    </div>
-
-                    <div class="product-price">
-
-                        <span class="price-usd">
-                            100 ⭐
-                        </span>
-
-                        <br>
-
-                        <span class="price-kgs">
-                            189 сом
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <button class="buy-button"
-                    onclick="buyGift('Алмаз',100,189)">
-
-                Купить
-
-            </button>
-
-        </div>
-
-
-        <div class="warning">
-
-            Для покупки подарка потребуется
-            Telegram username получателя.
-
-        </div>
-
-    </div>
-
-
-    <!-- PROFILE -->
-
-    <div id="profile"
-         class="hidden">
-
-        <button class="back"
-                onclick="showSection('home')">
-
-            ← Назад
-
-        </button>
-
-
-        <div class="card profile">
-
-            <div class="avatar">
-
-                <svg viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.6"
-                     stroke-linecap="round">
-
-                    <circle cx="12" cy="8" r="3.5"/>
-                    <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"/>
-
-                </svg>
-
-            </div>
-
-
-            <div class="username"
-                 id="username">
-
-                Пользователь
-
-            </div>
-
-
-            <div class="id"
-                 id="telegramId">
-
-                Telegram ID: —
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="section-title">
-                Мои заказы
-            </div>
-
-            <button class="big-button"
-                    onclick="orders()">
-
-                Посмотреть заказы
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     BOTTOM NAV
-========================= -->
-
-<div class="bottom-nav">
-
-    <button class="nav-btn active"
-            onclick="showSection('home')">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.7"
-             stroke-linecap="round"
-             stroke-linejoin="round">
-
-            <path d="M3 11.5L12 4l9 7.5"/>
-            <path d="M5 10.5V20h14v-9.5"/>
-            <path d="M9.5 20v-5h5v5"/>
-
+</section>
+
+</div><!-- BOTTOM NAV --><div class="nav-wrap"><div class="nav">
+
+    <div class="nav-item active"
+         data-screen="home"
+         onclick="openScreen('home')">
+
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 10.5 12 4l8 6.5V20H4V10.5Z"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linejoin="round"/>
         </svg>
 
         Главная
 
-    </button>
+    </div>
 
 
-    <button class="nav-btn"
-            onclick="showSection('stars')">
+    <div class="nav-item"
+         data-screen="stars"
+         onclick="openScreen('stars')">
 
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.7"
-             stroke-linecap="round"
-             stroke-linejoin="round">
-
-            <path d="M12 2.8l2.65 5.38 5.94.86-4.3 4.19 1.02 5.91L12 16.35l-5.31 2.79 1.02-5.91-4.3-4.19 5.94-.86L12 2.8z"/>
-
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2.8l2.65 5.37 5.92.86-4.28 4.17 1.01 5.89L12 16.31l-5.3 2.78 1.01-5.89-4.28-4.17 5.92-.86L12 2.8Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                fill="none"/>
         </svg>
 
-        Звёзды
+        Stars
 
-    </button>
+    </div>
 
 
-    <button class="nav-btn"
-            onclick="showSection('premium')">
+    <div class="nav-item"
+         data-screen="premium"
+         onclick="openScreen('premium')">
 
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.7">
-
-            <path d="M4 8h16l-2 11H6L4 8z"/>
-            <path d="M8 8l4-5 4 5"/>
-
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 5.5h14l-1.5 13h-11L5 5.5Z"
+                stroke="currentColor"
+                stroke-width="1.6"/>
+            <path d="M8 5.5V4a4 4 0 0 1 8 0v1.5"
+                stroke="currentColor"
+                stroke-width="1.6"/>
         </svg>
 
         Premium
 
-    </button>
+    </div>
 
 
-    <button class="nav-btn"
-            onclick="showSection('gifts')">
+    <div class="nav-item"
+         data-screen="profile"
+         onclick="openScreen('profile')">
 
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.7"
-             stroke-linecap="round">
-
-            <path d="M20 12v9H4v-9"/>
-            <path d="M2.5 7.5h19v4h-19z"/>
-            <path d="M12 7.5V21"/>
-            <path d="M8 7.5c-2.8 0-3.8-4.6-.5-4.6 2.2 0 4.5 4.6 4.5 4.6"/>
-            <path d="M16 7.5c2.8 0 3.8-4.6.5-4.6-2.2 0-4.5 4.6-4.5 4.6"/>
-
-        </svg>
-
-        Подарки
-
-    </button>
-
-
-    <button class="nav-btn"
-            onclick="showSection('profile')">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.7"
-             stroke-linecap="round">
-
-            <circle cx="12" cy="8" r="3.5"/>
-            <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"/>
-
+        <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="8" r="3.5"
+                stroke="currentColor"
+                stroke-width="1.7"/>
+            <path d="M5.5 20c.8-3.6 3-5.5 6.5-5.5s5.7 1.9 6.5 5.5"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"/>
         </svg>
 
         Профиль
 
-    </button>
+    </div>
+
+
+    <div class="nav-item"
+         onclick="openSupport()">
+
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 2v-4.5A7.5 7.5 0 1 1 20 11.5Z"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linejoin="round"/>
+        </svg>
+
+        Помощь
+
+    </div>
 
 </div>
 
+</div><script>
 
-<script>
+const tg = window.Telegram?.WebApp;
 
-const tg = window.Telegram.WebApp;
+if(tg){
+    tg.ready();
+    tg.expand();
 
-tg.ready();
-tg.expand();
+    if(tg.initDataUnsafe?.user){
+
+        const user = tg.initDataUnsafe.user;
+
+        const name =
+            user.first_name ||
+            "Telegram";
+
+        const username =
+            user.username
+            ? "@" + user.username
+            : "Username не указан";
+
+        document.getElementById("profileName").textContent = name;
+        document.getElementById("profileUsername").textContent = username;
+    }
+}
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
-function showSection(section) {
+function openScreen(id){
 
-    const sections = [
-        "home",
-        "stars",
-        "premium",
-        "gifts",
-        "profile"
-    ];
-
-    sections.forEach(id => {
-
-        const element =
-            document.getElementById(id);
-
-        if (element) {
-            element.classList.add("hidden");
-        }
-
+    document.querySelectorAll(".screen").forEach(screen=>{
+        screen.classList.remove("active");
     });
 
-    const current =
-        document.getElementById(section);
+    const screen = document.getElementById(id);
 
-    if (current) {
-        current.classList.remove("hidden");
+    if(screen){
+        screen.classList.add("active");
     }
 
+    document.querySelectorAll(".nav-item").forEach(item=>{
+        item.classList.remove("active");
 
-    const navButtons =
-        document.querySelectorAll(".nav-btn");
-
-    navButtons.forEach(btn =>
-        btn.classList.remove("active")
-    );
-
-
-    const index = {
-        home: 0,
-        stars: 1,
-        premium: 2,
-        gifts: 3,
-        profile: 4
-    };
-
-    if (index[section] !== undefined) {
-
-        navButtons[index[section]]
-            .classList.add("active");
-
-    }
-
+        if(item.dataset.screen === id){
+            item.classList.add("active");
+        }
+    });
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* TELEGRAM ACTION */
+
+function sendAction(action, data={}){
+
+    const payload = {
+        action:action,
+        ...data
+    };
+
+    if(tg){
+
+        try{
+            tg.sendData(JSON.stringify(payload));
+        }catch(e){
+            console.log(e);
+        }
+
+    }else{
+
+        alert(
+            "Mini App открыта не через Telegram.\n\n" +
+            JSON.stringify(payload)
+        );
+
+    }
+}
+
+
+/* BUY STARS */
+
+function buyStars(amount){
+
+    sendAction("buy_stars", {
+        stars:amount
+    });
+}
+
+
+/* CUSTOM STARS */
+
+function toggleCustom(){
+
+    const box =
+        document.getElementById("customBox");
+
+    box.classList.toggle("show");
+
+    if(box.classList.contains("show")){
+
+        setTimeout(()=>{
+            document
+                .getElementById("customStars")
+                .focus();
+        },100);
+
+    }
+
+}
+
+
+function updateCustomPrice(){
+
+    const input =
+        document.getElementById("customStars");
+
+    const price =
+        document.getElementById("customPrice");
+
+    const stars =
+        Number(input.value);
+
+    if(!stars || stars < 100){
+
+        price.textContent =
+            "Минимум — 100 Stars";
+
+        return;
+    }
+
+    const usd =
+        stars * 1.47 / 100;
+
+    const som =
+        usd * 87;
+
+    price.textContent =
+        `$${usd.toFixed(2)} · ${Math.round(som).toLocaleString("ru-RU")} сом`;
+}
+
+
+function buyCustomStars(){
+
+    const stars =
+        Number(
+            document.getElementById("customStars").value
+        );
+
+    if(!stars || stars < 100){
+
+        alert("Минимальная покупка — 100 Stars.");
+
+        return;
+    }
+
+    sendAction("buy_stars", {
+        stars:stars,
+        custom:true
     });
 
 }
 
 
-/* =========================
-   STARS
-========================= */
+/* SELL */
 
-function buyStars(amount, usd, kgs) {
+function updateSellPrice(){
 
-    tg.showConfirm(
+    const stars =
+        Number(
+            document.getElementById("sellStars").value
+        );
 
-        `⭐ ${amount} Stars\n\n` +
-        `Цена: $${usd.toFixed(2)} / ${kgs} сом\n\n` +
-        `Продолжить покупку?`,
+    const output =
+        document.getElementById("sellPrice");
 
-        function(ok) {
+    if(!stars || stars < 100){
 
-            if (!ok) return;
+        output.textContent =
+            "Минимум — 100 Stars";
 
-            tg.sendData(
-                JSON.stringify({
-                    action: "buy_stars",
-                    amount: amount,
-                    usd: usd,
-                    kgs: kgs
-                })
-            );
-
-        }
-
-    );
-
-}
-
-
-/* =========================
-   PREMIUM
-========================= */
-
-function buyPremium(period, usd, kgs) {
-
-    tg.showConfirm(
-
-        `Telegram Premium\n\n` +
-        `${period}\n` +
-        `Цена: $${usd.toFixed(2)} / ${kgs} сом\n\n` +
-        `Продолжить?`,
-
-        function(ok) {
-
-            if (!ok) return;
-
-            tg.sendData(
-                JSON.stringify({
-                    action: "buy_premium",
-                    period: period,
-                    usd: usd,
-                    kgs: kgs
-                })
-            );
-
-        }
-
-    );
-
-}
-
-
-/* =========================
-   GIFTS
-========================= */
-
-function buyGift(name, stars, kgs) {
-
-    tg.showConfirm(
-
-        `${name}\n\n` +
-        `${stars} ⭐ / ${kgs} сом\n\n` +
-        `Продолжить покупку?`,
-
-        function(ok) {
-
-            if (!ok) return;
-
-            tg.sendData(
-                JSON.stringify({
-                    action: "buy_gift",
-                    gift: name,
-                    stars: stars,
-                    kgs: kgs
-                })
-            );
-
-        }
-
-    );
-
-}
-
-
-/* =========================
-   SELL
-========================= */
-
-function sellStars() {
-
-    tg.showAlert(
-
-        "Продажа Stars\n\n" +
-        "Минимум: 100 ⭐\n\n" +
-        "После выбора банка " +
-        "нужно будет отправить QR-код " +
-        "для получения выплаты."
-
-    );
-
-
-    tg.sendData(
-        JSON.stringify({
-            action: "sell_stars"
-        })
-    );
-
-}
-
-
-/* =========================
-   ORDERS
-========================= */
-
-function orders() {
-
-    tg.sendData(
-        JSON.stringify({
-            action: "orders"
-        })
-    );
-
-}
-
-
-/* =========================
-   SUPPORT
-========================= */
-
-function support() {
-
-    tg.openTelegramLink(
-        "https://t.me/ononoim"
-    );
-
-}
-
-
-/* =========================
-   TELEGRAM USER
-========================= */
-
-if (
-    tg.initDataUnsafe &&
-    tg.initDataUnsafe.user
-) {
-
-    const user =
-        tg.initDataUnsafe.user;
-
-
-    let name = "";
-
-    if (user.first_name) {
-        name += user.first_name;
+        return;
     }
 
-    if (user.last_name) {
-        name +=
-            " " +
-            user.last_name;
+    const usd =
+        stars * 1.07 / 100;
+
+    const som =
+        usd * 87;
+
+    output.textContent =
+        `Вы получите примерно $${usd.toFixed(2)} · ${Math.round(som).toLocaleString("ru-RU")} сом`;
+}
+
+
+function sellStars(){
+
+    const stars =
+        Number(
+            document.getElementById("sellStars").value
+        );
+
+    if(!stars || stars < 100){
+
+        alert("Минимум для продажи — 100 Stars.");
+
+        return;
     }
 
+    sendAction("sell_stars", {
+        stars:stars
+    });
 
-    if (user.username) {
+}
 
-        document.getElementById(
-            "username"
-        ).innerText =
-            "@" + user.username;
 
-    } else {
+/* PREMIUM */
 
-        document.getElementById(
-            "username"
-        ).innerText =
-            name || "Пользователь";
+function buyPremium(months){
+
+    sendAction("buy_premium", {
+        months:months
+    });
+
+}
+
+
+/* SUPPORT */
+
+function openSupport(){
+
+    const username =
+        "ononoim";
+
+    if(tg){
+
+        tg.openTelegramLink(
+            "https://t.me/" + username
+        );
+
+    }else{
+
+        window.open(
+            "https://t.me/" + username,
+            "_blank"
+        );
 
     }
 
+}
 
-    document.getElementById(
-        "telegramId"
-    ).innerText =
-        "Telegram ID: " +
-        user.id;
+
+/* BACK BUTTON */
+
+if(tg){
+
+    tg.BackButton.onClick(()=>{
+        openScreen("home");
+        tg.BackButton.hide();
+    });
 
 }
 
-</script>
-
-</body>
-    </html>
+</script></body>
+      </html>
